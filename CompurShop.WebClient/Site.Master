@@ -41,7 +41,7 @@
                 <asp:ScriptReference Path="~/Scripts/Includes/Main.js" />
             </Scripts>
         </asp:ScriptManager>
-        
+
 
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
@@ -56,22 +56,14 @@
             </div>
             <!-- End Logo -->
 
-            <nav class="header-nav ms-auto justify-content-end">
+            <nav class="header-nav ms-auto" style="margin-left: auto !important;    margin-right: 0!important;">
                 <ul class="d-flex align-items-center">
-
-
                     <li class="nav-item dropdown">
-
                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
                             <i class="bi bi-bell"></i>
                             <span class="badge bg-primary badge-number"></span>
                         </a>
                         <!-- End Notification Icon -->
-
-
-                        <!-- End Notification Nav -->
-
-
 
                         <li class="nav-item dropdown pe-3">
 
@@ -192,12 +184,14 @@
         </aside>
         <!-- End Sidebar-->
 
-        <div id="contentmain" class="body-content container-fluid well">
-            <asp:Label runat="server" ID="LabelTitlePage" Text="Bla bla bla "></asp:Label>
+        <div id="contentmain" class="body-content">
+            <div class="pagetitle">
+                <h1>
+                    <asp:Label runat="server" ID="LabelTitlePage" Text=""></asp:Label>
+                </h1>
                 <asp:SiteMapPath ID="SiteMapPath1" runat="server" CssClass="breadcrumb" RenderCurrentNodeAsLink="false"></asp:SiteMapPath>
+            </div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
-                
-
             </asp:ContentPlaceHolder>
         </div>
 

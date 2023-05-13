@@ -3,14 +3,30 @@
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
 <asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
-    
+     <div class="card">
+          <div class="card-body">
+        <div>
 
-    <h3>xxxxxxxxxxxxxxxx</h3>    
-    <ul >
-        <li><h5>yyyyyyyyy</h5></li>        
-        <li><h5>yyyyy</h5></li>
-        <li><h5>zzzzzzzzzzzz zzzzzzzz zzzzz</h5></li>
-    </ul>
-    
+
+                        <asp:GridView ID="gridClientes" runat="server" AutoGenerateColumns="False" OnRowCommand=gridClientes_RowCommand
+                            AllowPaging="True" PageSize="10" OnPageIndexChanging=gridClientes_PageIndexChanging AllowCustomPaging="True" >
+                            <Columns>
+                                <asp:BoundField DataField="id" HeaderText="Id" ReadOnly="True" SortExpression="id" />
+                                <asp:BoundField DataField="nome" HeaderText="Nome" SortExpression="nome" />
+                                <asp:BoundField DataField="cpfcnpj" HeaderText="CPF / CNPJ" SortExpression="cpfcnpj" />
+                                <asp:BoundField DataField="tipo" HeaderText="Tipo" SortExpression="tipo" />
+                                <asp:BoundField DataField="telefone" HeaderText="Telefone" SortExpression="telefone" />
+                               <%-- <asp:BoundField DataField="cidade" HeaderText="Cidade" SortExpression="cidade" />
+                                <asp:BoundField DataField="uf" HeaderText="UF" SortExpression="uf" />--%>
+                                <asp:ButtonField HeaderText="" CommandName="cmdSelecionar" ButtonType="Image" Text="Selecionar"
+                                    ImageUrl="/Includes/Images/select.png" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
+                                <asp:ButtonField HeaderText="" CommandName="cmdExcluir" ButtonType="Image" Text="Excluir"
+                                    ImageUrl="/Includes/Images/select.png" ItemStyle-HorizontalAlign="Center" ItemStyle-VerticalAlign="Middle" />
+                            </Columns>
+                        </asp:GridView>
+                    </div>
+    </div>
+
+     </div>
     
 </asp:Content>
