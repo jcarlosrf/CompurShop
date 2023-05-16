@@ -1,0 +1,109 @@
+﻿/* Estilo para o icone de link de edição */
+.icon-column {
+    width: 50px !important;
+}
+
+a.icon-link {
+    color: #242745;
+    text-decoration: none;
+    font-weight: bold;    
+    margin-right: 6px;
+    margin-left: 6px;
+}
+
+/* GRID ***********************************************************/
+
+.grid {
+    border: none;
+    width: 100%;
+    color: #242745;
+    margin-bottom: 10px;
+}
+
+    .grid td {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        padding: 1px !important;
+    }
+
+.gridHeader th {
+    border-right: 1px solid #A2C2E2;
+    border-left: 1px solid #A2C2E2;
+    height: 20px;
+    color: #fff !important;
+    text-align: left;
+    padding: 1px;
+    border-right-color: #e5e5e5;
+    border-left-color: #e5e5e5;
+    background-color: #242745;
+    padding-left: 5px;
+}
+
+    .gridHeader th.center {
+        text-align: center;
+    }
+
+    .gridHeader th.right {
+        text-align: right;
+    }
+
+.gridRow {
+    background: #fff;
+}
+
+.gridAlternatingRow {
+    background: #e9eff5 ;
+}
+
+    .gridRow:hover, .gridAlternatingRow:hover, .gridSelectedRow, .gridHover {
+        background: #adbddb;
+    }
+
+.gridPager {
+    text-align: center;
+}
+
+    .gridPager table {
+        margin: 10px auto;
+    }
+
+    .gridPager td {
+        border: none;
+    }
+
+    .gridPager span {
+        color: #666;
+        display: block;
+        padding: 2px 5px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border: 1px solid #666;
+        font-weight: bold;
+        text-decoration: underline;
+    }
+
+    .gridPager a {
+        color: #aaa;
+        display: block;
+        padding: 2px 5px;
+        border-radius: 2px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border: 1px #aaa;
+        font-weight: bold;
+        text-decoration: none;
+    }
+
+        .gridPager a:hover {
+            border-color: #666;
+            color: #666;
+            text-decoration: underline;
+        }
+
+
+.col-grid {
+    padding: 12px 12px 12px 12px;
+}
+
+/* GRID END *******************************************************/
+/******************************************************************/

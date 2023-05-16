@@ -7,14 +7,27 @@ namespace CompurShop.Infra.Data
     public class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext()
-                    : base(ConfigurationManager.ConnectionStrings["CompuConnectionString"].ConnectionString)
+                     : base(GetConnectionString())
         {
         }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {            
+        }
+
+        private static string GetConnectionString()
         {
-            base.OnModelCreating(modelBuilder);
+            var builder = new NpgsqlConnectionStringBuilder
+            {
+                Host = "192.168.15.220",
+                Port = 5432,
+                Database = "compurshop",
+                Username = "postgres",
+                Password = "1234"
+            };
+
+            return builder.ToString();
         }
     }
 }

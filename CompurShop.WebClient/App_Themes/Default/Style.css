@@ -262,6 +262,7 @@ h6 {
 /* Close Button */
 .btn-close {
     background-size: 25%;
+    margin-right: 0 !important;
 }
 
     .btn-close:focus {

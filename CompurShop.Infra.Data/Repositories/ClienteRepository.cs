@@ -15,7 +15,7 @@ namespace CompurShop.Infra.Data.Repositories
             _context = context;
         }
 
-        public void SaveCliente(Clientes cliente)
+        public void SaveCliente(Cliente cliente)
         {
             if (cliente.Id == 0)
             {
@@ -27,18 +27,26 @@ namespace CompurShop.Infra.Data.Repositories
                 if (existingCliente != null)
                 {
                     existingCliente.Nome = cliente.Nome;
-                    existingCliente.CpfCnpj = cliente.CpfCnpj;
-                    existingCliente.Tipo = cliente.Tipo;
+                    existingCliente.CPFCNPJ = cliente.CPFCNPJ;
                     existingCliente.Telefone = cliente.Telefone;
+                    existingCliente.Logradouro = cliente.Logradouro;
+                    existingCliente.Numero = cliente.Numero;
+                    existingCliente.Complemento = cliente.Complemento;
+                    existingCliente.Cidade = cliente.Cidade;
+                    existingCliente.UF = cliente.UF;
+                    existingCliente.CEP = cliente.CEP;
                 }
             }
 
             _context.SaveChanges();
         }
 
-        public IEnumerable<Clientes> GetClientesByNome(string nome)
+        public IEnumerable<Cliente> GetClientesByNome(string nome)
         {
-            return _context.Clientes.Where(c => c.Nome.Contains(nome)).ToList();
+
+            var clientes = _context.Clientes.ToList();
+
+            return clientes;
         }
 
         public void DeleteCliente(int clienteId)

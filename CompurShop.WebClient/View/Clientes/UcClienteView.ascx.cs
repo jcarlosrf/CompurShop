@@ -7,17 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace CompurShop.WebClient.View.Clientes
 {
-    public partial class ClienteView : System.Web.UI.Page
+    public partial class UcClienteView : System.Web.UI.UserControl
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label pageTItle = Page.Master.FindControl("LabelTitlePage") as Label;
-            if (pageTItle != null)
-            {
-                pageTItle.Text = Page.Title;
-            }
 
         }
-
     }
 }

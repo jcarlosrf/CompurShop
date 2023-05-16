@@ -11,13 +11,6 @@ body {
     padding-right: 15px;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 280px;
-}
-
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
@@ -29,3 +22,18 @@ textarea {
         padding: 0;
     }
 }
+
+
+/* Bootstrap FORM CONTROLS */
+
+.form-label {
+    margin-bottom: 1px;
+    font-size: small;
+}
+
+.form-control {
+    margin-bottom: 10px;
+    padding: 6px;
+}
+
+/* End Bootstrap FORM CONTROLS */
