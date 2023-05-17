@@ -1,20 +1,16 @@
-﻿using Npgsql;
-using System.Configuration;
+﻿using CompurShop.Domain.Entities;
+using Npgsql;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
 namespace CompurShop.Infra.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ListaDbContext : DbContext
     {
-        public ApplicationDbContext()
-                     : base(GetConnectionString())
+        public ListaDbContext() : base(GetConnectionString())
         {
         }
-
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {            
-        }
+        public DbSet<Lista> Listas { get; set; }
 
         private static string GetConnectionString()
         {

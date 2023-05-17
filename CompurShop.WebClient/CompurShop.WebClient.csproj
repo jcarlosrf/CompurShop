@@ -124,7 +124,11 @@
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
     </Reference>
-    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Extensions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -190,6 +194,7 @@
     <Content Include="App_Themes\Default\bootstrap\bootstrap.rtl.css" />
     <Content Include="App_Themes\Default\bootstrap\bootstrap.rtl.min.css" />
     <Content Include="App_Themes\Default\Site.css" />
+    <Content Include="Controls\UcLoader.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -262,6 +267,7 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="View\Clientes\Clientes.aspx" />
     <Content Include="View\Clientes\UcClienteView.ascx" />
+    <Content Include="View\Listas\Listas.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Web.sitemap" />
@@ -270,6 +276,13 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\DependencyConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controls\UcLoader.ascx.cs">
+      <DependentUpon>UcLoader.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\UcLoader.ascx.designer.cs">
+      <DependentUpon>UcLoader.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -319,9 +332,19 @@
     <Compile Include="View\Clientes\UcClienteView.ascx.designer.cs">
       <DependentUpon>UcClienteView.ascx</DependentUpon>
     </Compile>
+    <Compile Include="View\Listas\Listas.aspx.cs">
+      <DependentUpon>Listas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Listas\Listas.aspx.designer.cs">
+      <DependentUpon>Listas.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebProject\ArquivoCSV.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Arquivos\" />
+    <Folder Include="Download\" />
     <Folder Include="View\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
@@ -345,7 +368,7 @@
       <Name>CompurShop.Infra.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\CompurShor.Domain.Entities\CompurShop.Domain.csproj">
-      <Project>{4A7BDA27-4336-49A5-AAD2-2B206CAEC261}</Project>
+      <Project>{4a7bda27-4336-49a5-aad2-2b206caec261}</Project>
       <Name>CompurShop.Domain</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,7 +1,7 @@
 ﻿using CompurShop.Domain.Entities;
 using CompurShop.Domain.Interfaces;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading;
 
 namespace CompurShop.Domain.Services
 {
@@ -14,9 +14,9 @@ namespace CompurShop.Domain.Services
             _clienteRepository = clienteRepository;
         }
 
-        public IEnumerable<Cliente> BuscarClientesPorNome(string nome)
-        {
-            return _clienteRepository.GetClientesByNome(nome);
+        public IEnumerable<Cliente> BuscarClientesPorNome(string nome, string cpf, int pagina, int registrosPorPagina)
+        {            
+            return _clienteRepository.GetClientesByNome(nome, cpf, pagina, registrosPorPagina);
         }
 
         public void GravarCliente(Cliente cliente)

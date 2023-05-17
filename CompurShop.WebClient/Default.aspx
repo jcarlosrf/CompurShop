@@ -33,7 +33,7 @@
                         </div>
                       <div class="col-8">
                     <div class="ps-3">
-                      <h6><asp:Label runat="server" ID="labelDashClientes" Text="1244" >
+                      <h6><asp:Label runat="server" ID="labelDashClientes" Text="15" >
                           </asp:Label></h6>
                       <%--<span class="text-danger small pt-1 fw-bold">12%</span> --%>
                       <span class="text-muted small pt-2 ps-1">Cadastros</span>

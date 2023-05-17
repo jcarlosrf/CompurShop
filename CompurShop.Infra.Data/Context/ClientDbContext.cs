@@ -68,7 +68,7 @@ namespace CompurShop.Infra.Data
         {
             var builder = new NpgsqlConnectionStringBuilder
             {
-                Host = "192.168.15.220",
+                Host = "localhost",
                 Port = 5432,
                 Database = "compurshop",
                 Username = "postgres",

@@ -7,30 +7,12 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CompurShop.WebClient.View.Clientes
+namespace CompurShop.WebClient.View.Listas
 {
 
 
-    public partial class Clientes
+    public partial class Listas
     {
-
-        /// <summary>
-        /// updClientes control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updClientes;
-
-        /// <summary>
-        /// UcLoader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CompurShop.WebClient.Controls.UcLoader UcLoader;
 
         /// <summary>
         /// lblMensagem control.
@@ -60,48 +42,39 @@ namespace CompurShop.WebClient.View.Clientes
         protected global::System.Web.UI.WebControls.TextBox txtNome;
 
         /// <summary>
-        /// labelCpf control.
+        /// fileUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelCpf;
+        protected global::System.Web.UI.WebControls.FileUpload fileUpload;
 
         /// <summary>
-        /// txtCpf control.
+        /// btnSearch1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtCpf;
+        protected global::System.Web.UI.WebControls.Button btnSearch1;
 
         /// <summary>
-        /// btnSearch control.
+        /// btnSalvar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        protected global::System.Web.UI.WebControls.LinkButton btnSalvar;
 
         /// <summary>
-        /// gridClientes control.
+        /// gridListas control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridClientes;
-
-        /// <summary>
-        /// UcClienteView control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CompurShop.WebClient.View.Clientes.UcClienteView UcClienteView;
+        protected global::System.Web.UI.WebControls.GridView gridListas;
     }
 }

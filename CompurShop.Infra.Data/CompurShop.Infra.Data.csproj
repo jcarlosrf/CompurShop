@@ -104,8 +104,12 @@
   <ItemGroup>
     <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Context\ClientDbContext.cs" />
+    <Compile Include="Context\CpfDbContext.cs" />
+    <Compile Include="Context\ListaDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClienteRepository.cs" />
+    <Compile Include="Repositories\CpfsRepository.cs" />
+    <Compile Include="Repositories\ListaReporsitory.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

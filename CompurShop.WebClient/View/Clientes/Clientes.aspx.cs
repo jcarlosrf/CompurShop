@@ -1,6 +1,8 @@
-﻿using CompurShop.Domain.Services;
+﻿using CompurShop.Domain.Entities;
+using CompurShop.Domain.Services;
 using CompurShop.WebClient.App_Start;
 using System;
+using System.Collections.Generic;
 using System.Web.UI;
 using System.Web.UI.HtmlControls;
 using System.Web.UI.WebControls;
@@ -11,6 +13,19 @@ namespace CompurShop.WebClient.View.Clientes
     {
         private readonly ClienteService _clienteService;
 
+        private IEnumerable<Cliente> VS_Clientes
+        {
+            get
+            {
+                if (ViewState["VS_Clientes"] == null)
+                    ViewState["VS_Clientes"] = new List<Cliente>();
+                return (List<Cliente>)ViewState["VS_Clientes"];
+            }
+            set
+            {
+                ViewState["VS_Clientes"] = value;
+            }
+        }
         public Clientes()
         {
             _clienteService = DependencyConfig.Resolve<ClienteService>();
@@ -18,17 +33,25 @@ namespace CompurShop.WebClient.View.Clientes
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Label pageTItle = Page.Master.FindControl("LabelTitlePage") as Label;
-            if (pageTItle != null)
+            if (!IsPostBack)
             {
-                pageTItle.Text = Page.Title;
-            }           
+                Label pageTItle = Page.Master.FindControl("LabelTitlePage") as Label;
+                if (pageTItle != null)
+                {
+                    pageTItle.Text = Page.Title;
+                }
+
+                gridClientes.DataSource = VS_Clientes;
+                gridClientes.DataBind();
+            }          
         }
 
 
         protected void gridClientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-
+            gridClientes.PageIndex = e.NewPageIndex;
+            gridClientes.DataSource = VS_Clientes;
+            gridClientes.DataBind();
         }
 
         protected void gridClientes_RowDataBound(object sender, GridViewRowEventArgs e)
@@ -37,32 +60,21 @@ namespace CompurShop.WebClient.View.Clientes
             {
                 e.Row.Cells[0].CssClass = "icon-column";
                 e.Row.Cells[1].CssClass = "icon-column";
-            }
-
-            //if (e.Row.RowType == DataControlRowType.DataRow)
-            //{
-            //    // Estilizar o link de edição
-            //    LinkButton editLink = (LinkButton)e.Row.Cells[0].Controls[0];
-            //    editLink.Text = "";
-            //    editLink.CssClass = "icon-link bi-pencil";
-
-            //    // Estilizar o link de exclusão
-            //    LinkButton deleteLink = (LinkButton)e.Row.Cells[0].Controls[2];
-            //    deleteLink.Text = "";
-            //    deleteLink.CssClass = "icon-link bi-trash";
-            //}
+            }            
         }
-
-        protected void gridClientes_RowEditing(object sender, GridViewEditEventArgs e)
-        {
-            
-        }
-
         protected void btnPesquisa_Click(object sender, EventArgs e)
         {
-            var clientes = _clienteService.BuscarClientesPorNome("");
-            gridClientes.DataSource = clientes;
-            gridClientes.DataBind();
+            try {
+                VS_Clientes = _clienteService.BuscarClientesPorNome(txtNome.Text.Trim(), txtCpf.Text.Trim(), 0,0);
+                gridClientes.DataSource = VS_Clientes;
+                gridClientes.DataBind();
+
+               
+            }
+            catch (Exception ex)
+            {
+                lblMensagem.Text = ex.Message;
+            }
         }
 
         protected void gridClientes_RowCommand(object sender, GridViewCommandEventArgs e)

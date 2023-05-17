@@ -19,7 +19,12 @@ namespace CompurShop.WebClient.App_Start
             container.RegisterType<ClienteDbContext>();
             container.RegisterType<ClienteService>();
 
-            // Registrando o container no contexto do aplicativo
+            container.RegisterType<IListaReporsitory, ListaReporsitory>();
+            container.RegisterType<ListaDbContext>();
+            container.RegisterType<ListaService>();
+
+            container.RegisterType<ICpfsRepository, CpfsRepository>();
+            container.RegisterType<CpfDbContext>();            
         }
 
         public static T Resolve<T>()

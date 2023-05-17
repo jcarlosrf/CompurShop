@@ -1,21 +1,16 @@
-﻿using Npgsql;
-using System.Configuration;
+﻿using CompurShop.Domain.Entities;
+using Npgsql;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 
 namespace CompurShop.Infra.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class CpfDbContext : DbContext
     {
-        public ApplicationDbContext()
-                     : base(GetConnectionString())
+        public CpfDbContext() : base(GetConnectionString())
         {
         }
-
-
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {            
-        }
-
+        public DbSet<Cpf> Cpfs { get; set; }
         private static string GetConnectionString()
         {
             var builder = new NpgsqlConnectionStringBuilder

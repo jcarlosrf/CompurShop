@@ -1,9 +1,11 @@
-﻿<asp:Label          runat="server"  CSSClass="form-label"       SkinID="labelItem" />
+﻿<asp:Label          runat="server"  CSSClass="form-label"                   SkinID="labelItem" />
 
-<asp:TextBox        runat="server"  CSSClass="form-control"     SkinID="textInput" />
+<asp:TextBox        runat="server"  CSSClass="form-control"                 SkinID="textInput" />
 
-<asp:ImageButton    runat="server"  CSSClass="btn btn-primary"  SkinID="btPrimary"/>
-<asp:Button         runat="server"  CSSClass="btn btn-primary"  SkinID="btPrimary"/>
+<asp:ImageButton    runat="server"  CSSClass="btn btn-primary"              SkinID="btPrimary"/>
+<asp:Button         runat="server"  CSSClass="btn btn-primary"              SkinID="btPrimary"/>
+<asp:LinkButton    runat="server"  CSSClass="btn btn-primary"               SkinID="btPrimary"/>
+<asp:LinkButton     runat="server"  CSSClass="btn btn-primary btn-search"   SkinID="btPesquisar"/>
 
 <asp:GridView runat="server" CssClass="table table-striped" >
     <RowStyle CssClass="gridRow" />

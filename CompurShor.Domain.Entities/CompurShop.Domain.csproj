@@ -7,8 +7,8 @@
     <ProjectGuid>{4A7BDA27-4336-49A5-AAD2-2B206CAEC261}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>CompurShor.Domain.Entities</RootNamespace>
-    <AssemblyName>CompurShor.Domain.Entities</AssemblyName>
+    <RootNamespace>CompurShop.Domain</RootNamespace>
+    <AssemblyName>CompurShop.Domain</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -43,7 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Cpf.cs" />
+    <Compile Include="Entities\Lista.cs" />
     <Compile Include="Interfaces\IClientRepository.cs" />
+    <Compile Include="Interfaces\ICpfsRepository.cs" />
+    <Compile Include="Interfaces\IListaReporsitory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

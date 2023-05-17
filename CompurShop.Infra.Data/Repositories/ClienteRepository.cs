@@ -1,5 +1,6 @@
 ﻿using CompurShop.Domain.Entities;
 using CompurShop.Domain.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -40,15 +41,39 @@ namespace CompurShop.Infra.Data.Repositories
 
             _context.SaveChanges();
         }
-
-        public IEnumerable<Cliente> GetClientesByNome(string nome)
+        public IEnumerable<Cliente> GetClientesByNome(string nome, string cpf, int pagina, int registrosPorPagina)
         {
+            var query = _context.Clientes.AsQueryable();
 
-            var clientes = _context.Clientes.ToList();
+            if (!string.IsNullOrEmpty(nome))
+                query = query.Where(c => c.Nome.Contains(nome));
 
-            return clientes;
+            if (!string.IsNullOrEmpty(cpf))
+                query = query.Where(c => c.Nome.Contains(cpf));
+
+            if (registrosPorPagina < 1 || pagina < 1)
+            {
+                return query.ToList();
+            }
+
+            int totalRegistros = query.Count();
+            int totalPaginas = (int)Math.Ceiling((double)totalRegistros / registrosPorPagina);
+
+            // Verifica se a página solicitada é válida
+            if (pagina > totalPaginas)
+            {
+                throw new ArgumentOutOfRangeException("Página inválida.");
+            }
+
+            // Realiza a paginação
+            var clientesPaginados = query.OrderBy(c => c.Nome)
+                .Skip((pagina - 1) * registrosPorPagina)
+                .Take(registrosPorPagina)
+                .ToList();
+
+            return clientesPaginados;
         }
-
+                
         public void DeleteCliente(int clienteId)
         {
             var cliente = _context.Clientes.Find(clienteId);

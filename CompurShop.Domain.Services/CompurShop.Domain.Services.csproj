@@ -42,20 +42,21 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ClienteService.cs" />
+    <Compile Include="ListaService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CompurShop.Infra.Data\CompurShop.Infra.Data.csproj">
-      <Project>{E72F065C-9EF3-4BAF-AE60-E4C80112682F}</Project>
+      <Project>{e72f065c-9ef3-4baf-ae60-e4c80112682f}</Project>
       <Name>CompurShop.Infra.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\CompurShor.Domain.Entities\CompurShop.Domain.csproj">
-      <Project>{4A7BDA27-4336-49A5-AAD2-2B206CAEC261}</Project>
+      <Project>{4a7bda27-4336-49a5-aad2-2b206caec261}</Project>
       <Name>CompurShop.Domain</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

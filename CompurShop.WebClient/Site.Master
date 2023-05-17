@@ -24,8 +24,7 @@
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />
-                <asp:ScriptReference Name="bootstrap" />
+                <asp:ScriptReference Name="jquery" />               
                 <asp:ScriptReference Name="WebFormsBundle" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
@@ -148,7 +147,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="/view/clientes/ClienteView.aspx">
+                            <a href="/View/Listas/Listas.aspx">
                                 <i class="bi bi-circle"></i><span>Importar Arquivos</span>
                             </a>
                         </li>
