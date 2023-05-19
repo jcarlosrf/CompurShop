@@ -14,9 +14,9 @@ namespace CompurShop.Domain.Services
             _clienteRepository = clienteRepository;
         }
 
-        public IEnumerable<Cliente> BuscarClientesPorNome(string nome, string cpf, int pagina, int registrosPorPagina)
+        public IEnumerable<Cliente> BuscarClientesPorNome(string nome, string cpf, int startRowIndex, int registrosPorPagina, out int totalRowCount)
         {            
-            return _clienteRepository.GetClientesByNome(nome, cpf, pagina, registrosPorPagina);
+            return _clienteRepository.GetClientesByNome(nome, cpf, startRowIndex, registrosPorPagina, out totalRowCount);
         }
 
         public void GravarCliente(Cliente cliente)

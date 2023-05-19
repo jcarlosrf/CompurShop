@@ -4,7 +4,7 @@
 
 <asp:ImageButton    runat="server"  CSSClass="btn btn-primary"              SkinID="btPrimary"/>
 <asp:Button         runat="server"  CSSClass="btn btn-primary"              SkinID="btPrimary"/>
-<asp:LinkButton    runat="server"  CSSClass="btn btn-primary"               SkinID="btPrimary"/>
+<asp:LinkButton     runat="server"  CSSClass="btn btn-primary"              SkinID="btPrimary"/>
 <asp:LinkButton     runat="server"  CSSClass="btn btn-primary btn-search"   SkinID="btPesquisar"/>
 
 <asp:GridView runat="server" CssClass="table table-striped" >
@@ -17,3 +17,5 @@
     <AlternatingRowStyle CssClass="gridAlternatingRow" />
     
 </asp:GridView>
+
+<asp:DropDownList   runat="server"  CSSClass="dropdown"                     SkinID="dropDown" />  

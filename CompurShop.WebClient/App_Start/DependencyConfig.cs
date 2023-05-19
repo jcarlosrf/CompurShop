@@ -15,16 +15,16 @@ namespace CompurShop.WebClient.App_Start
             container = new UnityContainer();
 
             // Registrando as dependências
+            container.RegisterType<ScireDbContext>();
+
+
             container.RegisterType<IClienteRepository, ClienteRepository>();
-            container.RegisterType<ClienteDbContext>();
             container.RegisterType<ClienteService>();
 
             container.RegisterType<IListaReporsitory, ListaReporsitory>();
-            container.RegisterType<ListaDbContext>();
             container.RegisterType<ListaService>();
 
             container.RegisterType<ICpfsRepository, CpfsRepository>();
-            container.RegisterType<CpfDbContext>();            
         }
 
         public static T Resolve<T>()

@@ -8,9 +8,9 @@ namespace CompurShop.Infra.Data.Repositories
 {
     public class CpfsRepository : ICpfsRepository
     {
-        private readonly CpfDbContext _context;
+        private readonly ScireDbContext _context;
 
-        public CpfsRepository(CpfDbContext context)
+        public CpfsRepository(ScireDbContext context)
         {
             _context = context;
         }

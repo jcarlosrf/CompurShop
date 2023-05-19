@@ -41,6 +41,11 @@ body {
     margin-bottom: 10px;
     
 }
+
+.btn {
+    margin-bottom: 10px;
+}
+
 .btn-primary {
     margin-bottom: 10px;
     color: white;
@@ -73,6 +78,15 @@ body {
     margin-right: 5px;
 }
 
+.btn-close {
+    margin-right: 0px;
+    margin-left: auto;
+}
+
+.alert-dismissible{ padding: 14px; }
+
+.me-1 { margin-right: 8px !important; }
+
 .loader {
     position: absolute;
     background: #808080;
@@ -96,5 +110,12 @@ body {
     left: 47%;
     text-align: center;
     vertical-align: middle;
+}
+
+.dropdown {
+    margin-bottom: 10px;
+    margin-left: Auto;
+    font-size: medium;
+    padding: 2px;
 }
 

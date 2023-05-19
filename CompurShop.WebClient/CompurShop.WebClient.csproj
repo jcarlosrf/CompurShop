@@ -340,6 +340,7 @@
       <DependentUpon>Listas.aspx</DependentUpon>
     </Compile>
     <Compile Include="WebProject\ArquivoCSV.cs" />
+    <Compile Include="WebProject\ErrorMessage.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

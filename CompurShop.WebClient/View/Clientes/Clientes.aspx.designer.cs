@@ -33,13 +33,13 @@ namespace CompurShop.WebClient.View.Clientes
         protected global::CompurShop.WebClient.Controls.UcLoader UcLoader;
 
         /// <summary>
-        /// lblMensagem control.
+        /// labelMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensagem;
+        protected global::System.Web.UI.WebControls.Label labelMessage;
 
         /// <summary>
         /// labelNome control.
@@ -85,6 +85,24 @@ namespace CompurShop.WebClient.View.Clientes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+
+        /// <summary>
+        /// lblRegistros control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblRegistros;
+
+        /// <summary>
+        /// dropLinhas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList dropLinhas;
 
         /// <summary>
         /// gridClientes control.

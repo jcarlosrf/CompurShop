@@ -6,6 +6,14 @@
 * License: https://bootstrapmade.com/license/
 */
 
+function openModal(iddiv) {
+    $(iddiv).modal('show');
+}
+
+function closeModalDanger() {
+    $(iddiv).modal('hide');
+}
+
 window.onload = function () {
     "use strict";
 

@@ -102,10 +102,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Context\ApplicationDbContext.cs" />
-    <Compile Include="Context\ClientDbContext.cs" />
-    <Compile Include="Context\CpfDbContext.cs" />
-    <Compile Include="Context\ListaDbContext.cs" />
+    <Compile Include="Context\ScireDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\ClienteRepository.cs" />
     <Compile Include="Repositories\CpfsRepository.cs" />

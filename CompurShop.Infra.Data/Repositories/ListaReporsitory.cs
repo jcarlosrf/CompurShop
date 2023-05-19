@@ -10,9 +10,9 @@ namespace CompurShop.Infra.Data.Repositories
 {
     public class ListaReporsitory : IListaReporsitory
     {
-        private readonly ListaDbContext _context;
+        private readonly ScireDbContext _context;
 
-        public ListaReporsitory(ListaDbContext context)
+        public ListaReporsitory(ScireDbContext context)
         {
             _context = context;
         }

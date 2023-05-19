@@ -9,9 +9,9 @@ namespace CompurShop.Infra.Data.Repositories
 {
     public class ClienteRepository : IClienteRepository
     {
-        private readonly ClienteDbContext _context;
+        private readonly ScireDbContext _context;
 
-        public ClienteRepository(ClienteDbContext context)
+        public ClienteRepository(ScireDbContext context)
         {
             _context = context;
         }
@@ -41,7 +41,7 @@ namespace CompurShop.Infra.Data.Repositories
 
             _context.SaveChanges();
         }
-        public IEnumerable<Cliente> GetClientesByNome(string nome, string cpf, int pagina, int registrosPorPagina)
+        public IEnumerable<Cliente> GetClientesByNome(string nome, string cpf, int startRowIndex, int registrosPorPagina, out int totalRowCount)
         {
             var query = _context.Clientes.AsQueryable();
 
@@ -49,25 +49,18 @@ namespace CompurShop.Infra.Data.Repositories
                 query = query.Where(c => c.Nome.Contains(nome));
 
             if (!string.IsNullOrEmpty(cpf))
-                query = query.Where(c => c.Nome.Contains(cpf));
+                query = query.Where(c => c.CPFCNPJ.Contains(cpf));
 
-            if (registrosPorPagina < 1 || pagina < 1)
-            {
+            totalRowCount = query.Count();
+
+            if (registrosPorPagina < 1 || startRowIndex < 1)
                 return query.ToList();
-            }
-
-            int totalRegistros = query.Count();
-            int totalPaginas = (int)Math.Ceiling((double)totalRegistros / registrosPorPagina);
-
-            // Verifica se a página solicitada é válida
-            if (pagina > totalPaginas)
-            {
-                throw new ArgumentOutOfRangeException("Página inválida.");
-            }
+            
+            int totalPaginas = (int)Math.Ceiling((double)totalRowCount / registrosPorPagina);
 
             // Realiza a paginação
             var clientesPaginados = query.OrderBy(c => c.Nome)
-                .Skip((pagina - 1) * registrosPorPagina)
+                .Skip(startRowIndex)
                 .Take(registrosPorPagina)
                 .ToList();
 
