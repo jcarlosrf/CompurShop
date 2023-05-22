@@ -10,7 +10,7 @@ function openModal(iddiv) {
     $(iddiv).modal('show');
 }
 
-function closeModalDanger() {
+function closeModal(iddiv) {
     $(iddiv).modal('hide');
 }
 

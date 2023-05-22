@@ -18,13 +18,17 @@ namespace CompurShop.WebClient.App_Start
             container.RegisterType<ScireDbContext>();
 
 
-            container.RegisterType<IClienteRepository, ClienteRepository>();
+            //servicos
             container.RegisterType<ClienteService>();
-
-            container.RegisterType<IListaReporsitory, ListaReporsitory>();
             container.RegisterType<ListaService>();
+            container.RegisterType<CombosService>();
 
+
+            // Repositorios
+            container.RegisterType<IClienteRepository, ClienteRepository>();
+            container.RegisterType<IListaReporsitory, ListaReporsitory>();
             container.RegisterType<ICpfsRepository, CpfsRepository>();
+            container.RegisterType<IUfRepository, UfRepository>();
         }
 
         public static T Resolve<T>()

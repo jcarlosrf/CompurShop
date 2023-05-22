@@ -14,10 +14,26 @@ namespace CompurShop.WebClient.View.Clientes
     public partial class Clientes : System.Web.UI.Page
     {
         private readonly ClienteService _clienteService;
+        private readonly CombosService _comboService;
+
+        protected List<Uf> Vs_Uf
+        {
+            get
+            {
+                if (ViewState["VS_Uf"] == null)
+                    ViewState["VS_Uf"] = new List<Uf>();
+                return (List<Uf>)ViewState["VS_Uf"];
+            }
+            set
+            {
+                ViewState["VS_Uf"] = value;                
+            }
+        }
 
         public Clientes()
         {
             _clienteService = DependencyConfig.Resolve<ClienteService>();
+            _comboService = DependencyConfig.Resolve<CombosService>();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -30,10 +46,17 @@ namespace CompurShop.WebClient.View.Clientes
                 {
                     pageTItle.Text = Page.Title;
                 }
+
+                CarregarCombos();
             }          
         }
 
-        protected void btnPesquisa_Click(object sender, EventArgs e)
+        private async void CarregarCombos()
+        {
+            Vs_Uf = await _comboService.GetEstados();           
+        }
+
+        protected void BtnPesquisa_Click(object sender, EventArgs e)
         {
             try
             {
@@ -42,7 +65,7 @@ namespace CompurShop.WebClient.View.Clientes
             }
             catch (Exception ex)
             {
-                labelMessage.Text = ErrorMessage.GetErroMessage("Não foi possivel realizar pesquisa. Tente novamente", ErrorMessage.TipoMensagem.Alerta) ;
+                labelMessage.Text = ErrorMessage.GetErroMessage("Erro ao realizar pesquisa. Tente novamente" + Environment.NewLine + ex.Message, ErrorMessage.TipoMensagem.Alerta) ;
             }
         }
 
@@ -96,11 +119,7 @@ namespace CompurShop.WebClient.View.Clientes
             {
                 case "cmdEdit":
                     var rowIndex = e.CommandArgument;
-
-
-                    // GridViewRow row = gridClientes.Rows[rowIndex];
-
-
+                    UcClienteView.CarregarCombo(Vs_Uf);
                     ScriptManager.RegisterStartupScript(this, GetType(), "EditCliente", "$(document).ready(function(){ openModal('#modalDiv'); }); ", true);
 
 

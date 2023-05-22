@@ -107,6 +107,7 @@
     <Compile Include="Repositories\ClienteRepository.cs" />
     <Compile Include="Repositories\CpfsRepository.cs" />
     <Compile Include="Repositories\ListaReporsitory.cs" />
+    <Compile Include="Repositories\UfRepository.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -36,10 +36,24 @@ body {
     padding: 6px;
 }
 
+.form-select {
+    margin-bottom: 10px;    
+    padding: 6px 6px 6px 36px;    
+}
+
+.form-select-page {
+    width: auto;
+    text-align: end;
+}
+
+.form-label-select{
+    margin-right: 10px;
+    margin-bottom: 10px;
+    margin-left: auto
+}
 /* End Bootstrap FORM CONTROLS */
 .fileload {
     margin-bottom: 10px;
-    
 }
 
 .btn {
@@ -110,12 +124,5 @@ body {
     left: 47%;
     text-align: center;
     vertical-align: middle;
-}
-
-.dropdown {
-    margin-bottom: 10px;
-    margin-left: Auto;
-    font-size: medium;
-    padding: 2px;
 }
 

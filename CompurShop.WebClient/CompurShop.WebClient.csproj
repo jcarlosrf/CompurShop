@@ -226,7 +226,7 @@
     <Content Include="App_Themes\Default\bootstrap\bootstrap-grid.rtl.css.map" />
     <Content Include="App_Themes\Default\bootstrap\bootstrap-grid.min.css.map" />
     <Content Include="App_Themes\Default\bootstrap\bootstrap-grid.css.map" />
-    <Content Include="App_Themes\Default\bootstrap-icons\bootstrap-icons.json" />
+    <Content Include="App_Data\bootstrap-icons.json" />
     <Content Include="App_Themes\Default\bootstrap-icons\bootstrap-icons.scss" />
     <Content Include="App_Themes\Default\bootstrap-icons\fonts\bootstrap-icons.woff" />
     <Content Include="App_Themes\Default\bootstrap-icons\fonts\bootstrap-icons.woff2" />
@@ -343,7 +343,6 @@
     <Compile Include="WebProject\ErrorMessage.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Arquivos\" />
     <Folder Include="Download\" />
     <Folder Include="View\Usuarios\" />
