@@ -16,7 +16,7 @@ namespace CompurShop.Infra.Data.Repositories
         {
             _context = context;
         }
-        public int SaveCliente(Lista lista)
+        public int SaveLista(Lista lista)
         {
             try
             {
@@ -31,6 +31,8 @@ namespace CompurShop.Infra.Data.Repositories
                     {
                         existingCliente.Nome = lista.Nome;
                         existingCliente.Datahora = lista.Datahora;
+                        existingCliente.IdCliente = lista.IdCliente;
+                        existingCliente.Status = lista.Status;
                     }
                 }
 
@@ -44,10 +46,28 @@ namespace CompurShop.Infra.Data.Repositories
             }
         }
 
-        public IEnumerable<Lista> GetListas()
+        public Lista GetEntity(int id)
+        {
+            return _context.Listas.FirstOrDefault(l => l.Id.Equals(id));           
+        }
+
+        public IQueryable<Lista> GetListas()
         {
             var query = _context.Listas.AsQueryable();
-            return query.ToList();
+            return query;
+        }
+
+        public IQueryable<Lista> GetListasByCliente(int idcliente)
+        {
+
+            var query = GetListas();
+
+            if (idcliente > 0)
+            {
+                query = query.Where(l => l.IdCliente.Equals(idcliente));
+            }
+
+            return query;
         }
     }
 }

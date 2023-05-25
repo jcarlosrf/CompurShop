@@ -7,7 +7,7 @@ using System.Web.UI;
 
 namespace CompurShop.WebClient.WebProject
 {
-    public static class ErrorMessage
+    public static class AlertMessage
     {
         public enum TipoMensagem
         {
@@ -22,7 +22,7 @@ namespace CompurShop.WebClient.WebProject
             Nenhuma
         }
 
-        public static string GetErroMessage(string message, TipoMensagem tipoMensagem)
+        public static string GetMessage(string message, TipoMensagem tipoMensagem)
         {
             // Pega o tema da página que chamou.
             string tema = HttpContext.Current.Handler is Page ?
@@ -67,10 +67,10 @@ namespace CompurShop.WebClient.WebProject
                     }
             }
 
-            return GetErroMessage(message, imagemEstilo, estilo);
+            return GetMessage(message, imagemEstilo, estilo);
         }
 
-        private static string GetErroMessage(string message, string imagemEstilo, string estilo)
+        private static string GetMessage(string message, string imagemEstilo, string estilo)
         {
             StringBuilder sb = new StringBuilder();
                         

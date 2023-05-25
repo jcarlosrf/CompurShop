@@ -22,6 +22,7 @@ namespace CompurShop.WebClient.App_Start
             container.RegisterType<ClienteService>();
             container.RegisterType<ListaService>();
             container.RegisterType<CombosService>();
+            container.RegisterType<UsuarioService>();
 
 
             // Repositorios
@@ -29,6 +30,7 @@ namespace CompurShop.WebClient.App_Start
             container.RegisterType<IListaReporsitory, ListaReporsitory>();
             container.RegisterType<ICpfsRepository, CpfsRepository>();
             container.RegisterType<IUfRepository, UfRepository>();
+            container.RegisterType<IUsuarioRepository, UsuarioRepository>();
         }
 
         public static T Resolve<T>()

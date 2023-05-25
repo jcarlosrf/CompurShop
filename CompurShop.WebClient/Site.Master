@@ -15,6 +15,7 @@
     <webopt:BundleReference runat="server" Path="~/App_Themes/Default/css" />
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+        
     </asp:ContentPlaceHolder>
 </head>
 <body>
@@ -24,8 +25,8 @@
                 <%--To learn more about bundling scripts in ScriptManager see https://go.microsoft.com/fwlink/?LinkID=301884 --%>
                 <%--Framework Scripts--%>
                 <asp:ScriptReference Name="MsAjaxBundle" />
-                <asp:ScriptReference Name="jquery" />               
-                <asp:ScriptReference Name="WebFormsBundle" />                
+                <asp:ScriptReference Name="jquery" />
+                <asp:ScriptReference Name="WebFormsBundle" />
                 <asp:ScriptReference Name="WebForms.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebForms.js" />
                 <asp:ScriptReference Name="WebUIValidation.js" Assembly="System.Web" Path="~/Scripts/WebForms/WebUIValidation.js" />
                 <asp:ScriptReference Name="MenuStandards.js" Assembly="System.Web" Path="~/Scripts/WebForms/MenuStandards.js" />
@@ -36,9 +37,11 @@
                 <asp:ScriptReference Name="Focus.js" Assembly="System.Web" Path="~/Scripts/WebForms/Focus.js" />
 
                 <%--Site Scripts--%>
-                <asp:ScriptReference Path="~/Scripts/bootstrap.bundle.js" />
                 <asp:ScriptReference Path="~/Scripts/bootstrap.js" />
+                <asp:ScriptReference Path="~/Scripts/bootstrap.bundle.js" />
                 <asp:ScriptReference Path="~/Scripts/Includes/Main.js" />
+                <asp:ScriptReference Path="~/Scripts/jquery-ui/jquery-ui.js" />
+                <asp:ScriptReference Path="~/Scripts/Includes/combobox.js" />
             </Scripts>
         </asp:ScriptManager>
 
@@ -56,7 +59,7 @@
             </div>
             <!-- End Logo -->
 
-            <nav class="header-nav ms-auto" style="margin-left: auto !important;    margin-right: 0!important;">
+            <nav class="header-nav ms-auto" style="margin-left: auto !important; margin-right: 0!important;">
                 <ul class="d-flex align-items-center">
                     <li class="nav-item dropdown">
                         <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
@@ -69,14 +72,15 @@
 
                             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                                 <img src="../../App_Themes/Default/img/user.png" alt="Profile" class="rounded-circle">
-                                <span class="d-none d-md-block dropdown-toggle ps-2">Jorge</span>
+                                <asp:Label runat="server" CssClass="d-none d-md-block dropdown-toggle ps-2" ID="labelUser" Enabled="true" Text=""></asp:Label>
                             </a>
                             <!-- End Profile Iamge Icon -->
 
                             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                                 <li class="dropdown-header">
-                                    <h6>Jorge</h6>
-                                    <span>Web Designer</span>
+                                    <h6>
+                                        <asp:Label runat="server" CssClass="d-none d-md-block dropdown-toggle ps-2" ID="labelUserDetalhe" Enabled="true" Text=""></asp:Label></h6>
+                                    <asp:Label runat="server" ID="labelNivel"></asp:Label>
                                 </li>
                                 <li>
                                     <hr class="dropdown-divider">
@@ -85,37 +89,14 @@
                                 <li>
                                     <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
                                         <i class="bi bi-person"></i>
-                                        <span>My Profile</span>
+                                        <span>Meu perfil</span>
                                     </a>
                                 </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                                        <i class="bi bi-gear"></i>
-                                        <span>Account Settings</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-
-                                <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                                        <i class="bi bi-question-circle"></i>
-                                        <span>Need Help?</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-
                                 <li>
                                     <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <i class="bi bi-box-arrow-right"></i>
-                                        <span>Sign Out</span>
+                                        <asp:LinkButton runat="server" ID="btnLogout" CssClass="icon-btn bi-box-arrow-right" Text="Logout">                                            
+                                        </asp:LinkButton>
+
                                     </a>
                                 </li>
 

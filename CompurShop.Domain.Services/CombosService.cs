@@ -10,10 +10,12 @@ namespace CompurShop.Domain.Services
     {
 
         private readonly IUfRepository _ufRepository;
+        private readonly IClienteRepository _clienteRepository;
 
-        public CombosService(IUfRepository ufRepository)
+        public CombosService(IUfRepository ufRepository, IClienteRepository clienteRepository)
         {
             _ufRepository = ufRepository;
+            _clienteRepository = clienteRepository;
         }
 
         public async Task<List<Uf>> GetEstados()
@@ -21,6 +23,13 @@ namespace CompurShop.Domain.Services
             var estados = await Task.Run(() => _ufRepository.GetAll());
 
             return estados.ToList();
+        }
+
+        public async Task<List<Cliente>> GetClientes()
+        {
+            var clientes = await Task.Run(() => _clienteRepository.GetClientesByNome(string.Empty, string.Empty, 0, 0, out int registros));
+
+            return clientes.OrderBy(c=>c.Nome).ToList();
         }
     }
 }

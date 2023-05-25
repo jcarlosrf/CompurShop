@@ -24,6 +24,9 @@ namespace CompurShop.Domain.Entities
         [Column("telefone")]
         public string Telefone { get; set; }
 
+        [Column("email")]
+        public string Email { get; set; }
+
         [Column("logradouro")]
         public string Logradouro { get; set; }
 
@@ -38,6 +41,9 @@ namespace CompurShop.Domain.Entities
 
         [Column("uf")]
         public string UF { get; set; }
+
+        [Column("bairro")]
+        public string Bairro { get; set; }
 
         [Column("cep")]
         public string CEP { get; set; }

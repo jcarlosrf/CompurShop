@@ -87,6 +87,15 @@ namespace CompurShop.WebClient.View.Clientes
         protected global::System.Web.UI.WebControls.LinkButton btnSearch;
 
         /// <summary>
+        /// btnNew control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinkButton btnNew;
+
+        /// <summary>
         /// lblRegistros control.
         /// </summary>
         /// <remarks>
@@ -121,5 +130,14 @@ namespace CompurShop.WebClient.View.Clientes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CompurShop.WebClient.View.Clientes.UcClienteView UcClienteView;
+
+        /// <summary>
+        /// UcMensagem1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CompurShop.WebClient.Controls.UcMensagem UcMensagem1;
     }
 }

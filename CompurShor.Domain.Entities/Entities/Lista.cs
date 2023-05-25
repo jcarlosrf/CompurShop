@@ -21,18 +21,48 @@ namespace CompurShop.Domain.Entities
         [Column("datahora")]
         public DateTime Datahora{ get; set; }
 
+        [Column("idcliente")]
+        public int IdCliente { get; set; }
+
+
+        [Column("status")]
+        public int Status { get; set; }
+
+        [NotMapped]
+        public Cliente Cliente { get; set; }
+
+
         [NotMapped] // Ignorar a coluna Tipo no mapeamento da tabela
-        public int QtdeCpfs
+        public int QtdeCpfs { get; set; }
+
+        [NotMapped] // Ignorar a coluna Tipo no mapeamento da tabela
+        public string CpfsLista { get; set; }
+
+        [NotMapped] // Ignorar a coluna Tipo no mapeamento da tabela
+        public Boolean btnProcessar 
         {
-            get;set;
+            get
+            {
+                return Status == 0;
+            }
         }
 
         [NotMapped] // Ignorar a coluna Tipo no mapeamento da tabela
-        public string CpfsLista
+        public Boolean iconeProcessar
         {
-            get; set;
+            get
+            {
+                return Status == 1;
+            }
         }
 
-        
+        [NotMapped] // Ignorar a coluna Tipo no mapeamento da tabela
+        public Boolean btnArquivo
+        {
+            get
+            {
+                return Status == 2;
+            }
+        }
     }
 }

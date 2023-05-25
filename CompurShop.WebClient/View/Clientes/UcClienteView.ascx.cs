@@ -13,27 +13,68 @@ namespace CompurShop.WebClient.View.Clientes
 {
     public partial class UcClienteView : System.Web.UI.UserControl
     {
-        private readonly CombosService _comboService;
-               
+        private readonly ClienteService _clienteService;
+
+        // Delegate
+        public delegate void GravouClienteEventHandler(object sender, string nome);
+        // Event
+        public event GravouClienteEventHandler GravouCliente;
+
+        public Cliente VsCliente
+        {
+            get
+            {
+                if (ViewState["VS_Cliente"] == null)
+                    ViewState["VS_Uf"] = new Cliente();
+                return (Cliente)ViewState["VS_Cliente"];
+            }
+            set
+            {
+                ViewState["VS_Cliente"] = value;
+            }
+        }
 
         public UcClienteView()
         {
-            _comboService = DependencyConfig.Resolve<CombosService>();            
+            _clienteService = DependencyConfig.Resolve<ClienteService>();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!IsPostBack)
+            Label pageTItle = Page.Master.FindControl("LabelTitlePage") as Label;
+
+            if (pageTItle != null)
             {
-                
+                pageTItle.Text = Page.Title;
+                VsCliente = new Cliente();
             }
         }
 
-        public void CarregarCombo(List<Uf> ufs)
+        public void CarregarDados(Cliente cliente, List<Uf> ufs)
         {
-            dropEstados.DataSource = ufs;
-            dropEstados.DataBind();
-            dropEstados.SelectedIndex = -1;
+            VsCliente = cliente;
+
+            dropUF.DataSource = ufs;            
+            dropUF.DataBind();
+
+            textNome.Text = cliente.Nome;
+            textCpf.Text = cliente.CPFCNPJ;
+            textTelefone.Text = cliente.Telefone;
+            textEmail.Text = cliente.Email;
+            textLogradouro.Text = cliente.Logradouro;
+            textNumnero.Text = cliente.Numero;
+            textComplemento.Text = cliente.Complemento;
+            textCidade.Text = cliente.Cidade;
+            textBairro.Text = cliente.Bairro;
+            textCep.Text = cliente.CEP;
+
+            // Carregar o valor no dropdown de estados
+            if (VsCliente.UF != null)
+                dropUF.SelectedValue = VsCliente.UF;
+            else
+            {
+                dropUF.ClearSelection();                
+            }
         }
 
 
@@ -41,8 +82,23 @@ namespace CompurShop.WebClient.View.Clientes
         {
             if (Page.IsValid)
             {
-                ScriptManager.RegisterStartupScript(this, GetType(), "EditCliente", "$(document).ready(function(){ closeModal('#modalDiv'); }); ", true);
-                updCliente.Update();
+                Cliente cliente = VsCliente;
+
+                cliente.Nome = textNome.Text;
+                cliente.CPFCNPJ = textCpf.Text;
+                cliente.Telefone = textTelefone.Text;
+                cliente.Email = textEmail.Text;
+                cliente.Logradouro = textLogradouro.Text;
+                cliente.Numero = textNumnero.Text;
+                cliente.Complemento = textComplemento.Text;
+                cliente.Cidade = textCidade.Text;
+                cliente.Bairro = textBairro.Text;
+                cliente.CEP = textCep.Text;
+                cliente.UF = dropUF.SelectedValue;
+
+                _clienteService.GravarCliente(cliente);
+                
+                GravouCliente(sender, cliente.Nome);
             }
         }
     }

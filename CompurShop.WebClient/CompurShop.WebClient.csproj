@@ -44,6 +44,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=20.1.0.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <HintPath>..\packages\AjaxControlToolkit.20.1.0\lib\net40\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="AspNet.ScriptManager.bootstrap, Version=5.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\AspNet.ScriptManager.bootstrap.5.2.3\lib\net45\AspNet.ScriptManager.bootstrap.dll</HintPath>
     </Reference>
@@ -176,6 +179,18 @@
     <Content Include="App_Themes\Default\img\favicon.png" />
     <Content Include="App_Themes\Default\img\logo.png" />
     <Content Include="App_Themes\Default\img\user.png" />
+    <Content Include="App_Themes\Default\jquery-ui\images\ui-icons_444444_256x240.png" />
+    <Content Include="App_Themes\Default\jquery-ui\images\ui-icons_555555_256x240.png" />
+    <Content Include="App_Themes\Default\jquery-ui\images\ui-icons_777620_256x240.png" />
+    <Content Include="App_Themes\Default\jquery-ui\images\ui-icons_777777_256x240.png" />
+    <Content Include="App_Themes\Default\jquery-ui\images\ui-icons_cc0000_256x240.png" />
+    <Content Include="App_Themes\Default\jquery-ui\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="App_Themes\Default\jquery-ui\jquery-ui.css" />
+    <Content Include="App_Themes\Default\jquery-ui\jquery-ui.min.css" />
+    <Content Include="App_Themes\Default\jquery-ui\jquery-ui.structure.css" />
+    <Content Include="App_Themes\Default\jquery-ui\jquery-ui.structure.min.css" />
+    <Content Include="App_Themes\Default\jquery-ui\jquery-ui.theme.css" />
+    <Content Include="App_Themes\Default\jquery-ui\jquery-ui.theme.min.css" />
     <Content Include="App_Themes\Default\Style.css" />
     <Content Include="App_Themes\Default\bootstrap\bootstrap-grid.css" />
     <Content Include="App_Themes\Default\bootstrap\bootstrap-grid.min.css" />
@@ -195,9 +210,11 @@
     <Content Include="App_Themes\Default\bootstrap\bootstrap.rtl.min.css" />
     <Content Include="App_Themes\Default\Site.css" />
     <Content Include="Controls\UcLoader.ascx" />
+    <Content Include="Controls\UcMensagem.ascx" />
     <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Login\Login.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -236,11 +253,15 @@
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
+    <Content Include="Scripts\Includes\combobox.js" />
+    <Content Include="Scripts\Includes\fileload.js" />
     <Content Include="Scripts\Includes\Main.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui\jquery-ui.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\WebForms\DetailsView.js" />
     <Content Include="Scripts\WebForms\Focus.js" />
@@ -268,6 +289,7 @@
     <Content Include="View\Clientes\Clientes.aspx" />
     <Content Include="View\Clientes\UcClienteView.ascx" />
     <Content Include="View\Listas\Listas.aspx" />
+    <Content Include="View\Listas\UcLista.ascx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Web.sitemap" />
@@ -283,6 +305,13 @@
     <Compile Include="Controls\UcLoader.ascx.designer.cs">
       <DependentUpon>UcLoader.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\UcMensagem.ascx.cs">
+      <DependentUpon>UcMensagem.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\UcMensagem.ascx.designer.cs">
+      <DependentUpon>UcMensagem.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -292,6 +321,13 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Login\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -339,8 +375,17 @@
     <Compile Include="View\Listas\Listas.aspx.designer.cs">
       <DependentUpon>Listas.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Listas\UcLista.ascx.cs">
+      <DependentUpon>UcLista.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Listas\UcLista.ascx.designer.cs">
+      <DependentUpon>UcLista.ascx</DependentUpon>
+    </Compile>
     <Compile Include="WebProject\ArquivoCSV.cs" />
-    <Compile Include="WebProject\ErrorMessage.cs" />
+    <Compile Include="WebProject\AlertMessage.cs" />
+    <Compile Include="WebProject\Criptografia.cs" />
+    <Compile Include="WebProject\SessionWeb.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Arquivos\" />
@@ -351,6 +396,7 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Scripts\jquery-ui\package.json" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

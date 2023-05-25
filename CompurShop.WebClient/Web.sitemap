@@ -1,10 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
   <siteMapNode url="Default.aspx" title="Home Page"  description="Home Page">
-    <siteMapNode url="View/Clientes/Clientes" title="Lista de Clientes"  description="Pesquisa de Clientes" >
-      <siteMapNode url="View/Clientes/ClienteView" title="Cliente"  description="Edição de Cliente" />
+    <siteMapNode url="View/Clientes/Clientes" title="Consulta de Clientes"  description="Pesquisa de Clientes" >
+      <siteMapNode url="View/Clientes/UcClienteView" title="Cliente"  description="Edição de Cliente" />
     </siteMapNode>
-
+    <siteMapNode url="View/Listas/Listas" title="Lista de Arquivos"  description="Pesquisa de Clientes" >
+      <siteMapNode url="View/Clientes/UcLista" title="Lista"  description="Inclusão de Lista" />
+    </siteMapNode>
 
     <siteMapNode url="/View/Usuarios/Usuarios.aspx" title="Usuários"  description="Pesquisa de Usuários" >
       <siteMapNode url="/View/Clientes/UsuarioView.aspx" title="Usuário"  description="Edição de Usuário" />

@@ -16,7 +16,12 @@ namespace CompurShop.Infra.Data.Repositories
             _context = context;
         }
 
-        public void SaveCliente(Cliente cliente)
+        public Cliente GetEntity(int id)
+        {
+            return _context.Clientes.FirstOrDefault(c => c.Id.Equals(id));
+        }
+
+        public int SaveCliente(Cliente cliente)
         {
             if (cliente.Id == 0)
             {
@@ -36,10 +41,12 @@ namespace CompurShop.Infra.Data.Repositories
                     existingCliente.Cidade = cliente.Cidade;
                     existingCliente.UF = cliente.UF;
                     existingCliente.CEP = cliente.CEP;
+                    existingCliente.Email = cliente.Email;
+                    existingCliente.Bairro = cliente.Bairro;
                 }
             }
 
-            _context.SaveChanges();
+            return _context.SaveChanges();
         }
         public IEnumerable<Cliente> GetClientesByNome(string nome, string cpf, int startRowIndex, int registrosPorPagina, out int totalRowCount)
         {
@@ -53,7 +60,7 @@ namespace CompurShop.Infra.Data.Repositories
 
             totalRowCount = query.Count();
 
-            if (registrosPorPagina < 1 || startRowIndex < 1)
+            if (registrosPorPagina < 1 || startRowIndex < 0)
                 return query.ToList();
             
             int totalPaginas = (int)Math.Ceiling((double)totalRowCount / registrosPorPagina);
@@ -67,14 +74,16 @@ namespace CompurShop.Infra.Data.Repositories
             return clientesPaginados;
         }
                 
-        public void DeleteCliente(int clienteId)
+        public int DeleteCliente(int clienteId)
         {
             var cliente = _context.Clientes.Find(clienteId);
             if (cliente != null)
             {
                 _context.Clientes.Remove(cliente);
-                _context.SaveChanges();
+                return _context.SaveChanges();
             }
+
+            return 0;
         }
     }
 }

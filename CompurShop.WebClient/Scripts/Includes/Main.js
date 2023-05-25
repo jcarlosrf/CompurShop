@@ -14,9 +14,13 @@ function closeModal(iddiv) {
     $(iddiv).modal('hide');
 }
 
+
 window.onload = function () {
     "use strict";
-
+    $('#fileUpload').on('change', function () {
+        var fileName = $(this)[0].files[0].name;
+        $('#file').val(fileName);
+    });
     /**
      * Easy selector helper function
      */

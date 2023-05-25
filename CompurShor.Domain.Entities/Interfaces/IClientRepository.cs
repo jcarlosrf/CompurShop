@@ -5,9 +5,11 @@ namespace CompurShop.Domain.Interfaces
 {
     public interface IClienteRepository
     {
-        void SaveCliente(Cliente cliente);
+        int SaveCliente(Cliente cliente);
         IEnumerable<Cliente> GetClientesByNome(string nome, string cpf, int startRowIndex, int registrosPorPagina, out int totalRowCount);
-        void DeleteCliente(int clienteId);
+        int DeleteCliente(int clienteId);
+
+        Cliente GetEntity(int id);
     }
 }
 

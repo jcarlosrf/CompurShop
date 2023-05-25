@@ -26,6 +26,11 @@ namespace CompurShop.Domain.Services
 
             _clienteRepository.SaveCliente(cliente);
         }
+
+        public void Deletar(Cliente cliente)
+        {
+            _clienteRepository.DeleteCliente(cliente.Id);
+        }
     }
 }
 

@@ -24,24 +24,6 @@ namespace CompurShop.WebClient.View.Clientes
         protected global::System.Web.UI.WebControls.Label labelTitulo;
 
         /// <summary>
-        /// updCliente control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updCliente;
-
-        /// <summary>
-        /// UcLoader control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CompurShop.WebClient.Controls.UcLoader UcLoader;
-
-        /// <summary>
         /// labelCpf control.
         /// </summary>
         /// <remarks>
@@ -78,15 +60,6 @@ namespace CompurShop.WebClient.View.Clientes
         protected global::System.Web.UI.WebControls.Label labelNome;
 
         /// <summary>
-        /// textNome control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textNome;
-
-        /// <summary>
         /// rfvNome control.
         /// </summary>
         /// <remarks>
@@ -94,6 +67,15 @@ namespace CompurShop.WebClient.View.Clientes
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNome;
+
+        /// <summary>
+        /// textNome control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox textNome;
 
         /// <summary>
         /// labelTelefone control.
@@ -222,13 +204,13 @@ namespace CompurShop.WebClient.View.Clientes
         protected global::System.Web.UI.WebControls.TextBox textCidade;
 
         /// <summary>
-        /// dropEstados control.
+        /// dropUF control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList dropEstados;
+        protected global::System.Web.UI.WebControls.DropDownList dropUF;
 
         /// <summary>
         /// labelCep control.

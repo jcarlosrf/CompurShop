@@ -6,7 +6,8 @@
 <asp:ImageButton    runat="server"  CSSClass="btn btn-primary"              SkinID="btPrimary"/>
 <asp:Button         runat="server"  CSSClass="btn btn-primary"              SkinID="btPrimary"/>
 <asp:LinkButton     runat="server"  CSSClass="btn btn-primary"              SkinID="btPrimary"/>
-<asp:LinkButton     runat="server"  CSSClass="btn btn-primary btn-search"   SkinID="btPesquisar"/>
+<asp:LinkButton     runat="server"  CSSClass="btn btn-primary btn-search bi bi-search"              SkinID="btPesquisar"/>
+<asp:LinkButton     runat="server"  CSSClass="btn btn-success btn-new bi bi-file-earmark-plus"      SkinID="btNovo"/>
 
 <asp:DropDownList   runat="server"  CSSClass="form-select form-select-page" SkinID="dropDownPage" />  
 <asp:DropDownList   runat="server"  CSSClass="form-select"                  SkinID="dropDown" />  

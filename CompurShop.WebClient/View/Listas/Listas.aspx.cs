@@ -7,13 +7,33 @@ using System.Collections.Generic;
 using System.IO;
 using System.Web.UI.WebControls;
 using System.Linq;
+using System.Web.UI;
 
 namespace CompurShop.WebClient.View.Listas
 {
     public partial class Listas : System.Web.UI.Page
     {
         private readonly ListaService _ListaService;
-        private IEnumerable<Lista> VS_Listas
+        private readonly CombosService _CombosService;
+        public Listas()
+        {
+            _ListaService = DependencyConfig.Resolve<ListaService>();
+            _CombosService = DependencyConfig.Resolve<CombosService>();
+        }
+
+        public SessionWEB __SessionWEB
+        {
+            get
+            {
+                return (SessionWEB)Session[SessionWEB.SessSessionWEB];
+            }
+            set
+            {
+                Session[SessionWEB.SessSessionWEB] = value;
+            }
+        }
+
+        private List<Lista> VS_Listas
         {
             get
             {
@@ -27,80 +47,52 @@ namespace CompurShop.WebClient.View.Listas
             }
         }
 
-        private Lista VS_Lista
+        protected List<Cliente> Vs_Clientes
         {
             get
             {
-                if (ViewState["VS_Lista"] == null)
-                    ViewState["VS_Lista"] = new Lista();
-                return (Lista)ViewState["VS_Lista"];
+                if (ViewState["Vs_Clientes"] == null)
+                    ViewState["Vs_Clientes"] = new List<Uf>();
+                return (List<Cliente>)ViewState["Vs_Clientes"];
             }
             set
             {
-                ViewState["VS_Lista"] = value;
+                ViewState["Vs_Clientes"] = value;
             }
-        }
-
-        public Listas()
-        {
-            _ListaService = DependencyConfig.Resolve<ListaService>();
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            VS_Listas = _ListaService.BuscarListas();
-            gridListas.DataSource = VS_Listas;
-            gridListas.DataBind();
-        }
-
-        protected void gridListas_RowDataBound(object sender, GridViewRowEventArgs e)
-        {
-
-        }
-
-        protected void btnSearch_Click(object sender, EventArgs e)
-        {
-            if (fileUpload.HasFile)
+            if(!IsPostBack)
             {
-                // Verifique se o arquivo é um arquivo CSV
-                if (Path.GetExtension(fileUpload.FileName).Equals(".csv", StringComparison.OrdinalIgnoreCase))
+                Label pageTItle = Page.Master.FindControl("LabelTitlePage") as Label;
+
+                if (pageTItle != null)
                 {
-                    // Salve o arquivo em algum diretório
-                    string filePath = Server.MapPath("~/Arquivos/") + fileUpload.FileName;
-                    fileUpload.SaveAs(filePath);
-
-                    // Processar o arquivo CSV (exemplo: ler as linhas)
-                    string[] lines = File.ReadAllLines(filePath);
-
-                    var texto = File.ReadAllText(filePath);
-
-                    VS_Lista = _ListaService.PreparaLista(lines, texto);
-                    
-
-                    lblMensagem.Text = string.Format("Qtde lidos: {0} - Repetidos {1} ", lines.Length, VS_Lista.QtdeCpfs);
-                    lblMensagem.Visible = true;
-
-                    
+                    pageTItle.Text = Page.Title;
                 }
-                else
-                {
-                    // O arquivo não é um arquivo CSV
-                    Response.Write("Selecione um arquivo CSV.");
-                }
-            }           
-        }
 
-        protected void btnSalvar_Click(object sender, EventArgs e)
+                CarregarCombos();
+            }
+
+            UcLista.GravouLista += UcLista_GravouLista;
+        }       
+
+        private async void CarregarCombos()
         {
-            VS_Lista.Nome = txtNome.Text;
+            Vs_Clientes = await _CombosService.GetClientes();
 
-            _ListaService.GravarLista(VS_Lista);
+            listClientes.DataSource = Vs_Clientes;
+            listClientes.ClearSelection();
+            listClientes.DataBind();
 
-            VS_Listas = _ListaService.BuscarListas();
-            gridListas.DataSource = VS_Listas;
-            gridListas.DataBind();
-
+            if (__SessionWEB.IdCliente > 0)
+            {
+                listClientes.SelectedValue = __SessionWEB.IdCliente.ToString();
+                listClientes.Enabled = false;
+            }
         }
+
 
         protected void gridListas_RowCommand(object sender, GridViewCommandEventArgs e)
         {
@@ -108,24 +100,17 @@ namespace CompurShop.WebClient.View.Listas
             {
                 try
                 {
-                    int index = Convert.ToInt32(e.CommandArgument); // obter índice da linha selecionada
-                    int idArea = Convert.ToInt32(gridListas.DataKeys[index].Value);
+                    int idLista = Convert.ToInt32(e.CommandArgument);
 
-                    Lista MinhaLista = _ListaService.BuscarListas().Where(l => l.Id == idArea).FirstOrDefault();
+                    Lista MinhaLista = _ListaService.GetListaById(idLista);
                     if (MinhaLista == null)
                     {
-                        string script = "alert('Não foi possível gerar arquivo!');";
-
-                        // Registre o script na página
-                        ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script, true);
+                        labelMessage.Text = AlertMessage.GetMessage("Não foi possível gerar arquivo", AlertMessage.TipoMensagem.Erro);
                         return;
                     }
 
-
                     List<Cpf> cpfs = _ListaService.CpfPorLista(MinhaLista.Id);
 
-                    
-                    
                     string FileName = string.Format("Lista{0}_{1}.csv", MinhaLista.Nome, DateTime.Now.ToString("yyyyMMddHHmmss"));
 
                     if (ArquivoCsv.ExportarParaCSV(cpfs, FileName))
@@ -134,24 +119,65 @@ namespace CompurShop.WebClient.View.Listas
                     }
                     else
                     {
-                        string script = "alert('Não foi possível gerar arquivo!');";
-
-                        // Registre o script na página
-                        ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script, true);
-                        return;
+                        labelMessage.Text = AlertMessage.GetMessage("Não foi possível gerar arquivo", AlertMessage.TipoMensagem.Erro);
                     }
 
                 }
                 catch (Exception ex)
                 {
-                    string script = "alert('Não foi possível gerar arquivo!');";
-
-                    // Registre o script na página
-                    ClientScript.RegisterStartupScript(this.GetType(), "AlertScript", script, true);
+                    labelMessage.Text = AlertMessage.GetMessage("Não foi possível gerar arquivo" + Environment.NewLine + ex.Message, AlertMessage.TipoMensagem.Erro);
                     return;
                 }
-
             }
+            else if (e.CommandName == "btnProcessar")
+            {
+                try
+                {
+                    int idLista = Convert.ToInt32(e.CommandArgument);
+                    _ListaService.UpdateStatus(idLista, 1);
+
+                    gridListas.DataBind();
+
+                }
+                catch (Exception ex)
+                {
+                    labelMessage.Text = AlertMessage.GetMessage("Não foi possível atualizar status " + Environment.NewLine + ex.Message, AlertMessage.TipoMensagem.Erro);
+                    return;
+                }
+            }
+        }
+
+        // The return type can be changed to IEnumerable, however to support
+        // paging and sorting, the following parameters must be added:
+        //     int maximumRows
+        //     int startRowIndex
+        //     out int totalRowCount
+        //     string sortByExpression
+        public IEnumerable<Lista> GridListas_GetData()
+        {
+            _ = int.TryParse(listClientes.SelectedValue, out int idcliente);
+            VS_Listas = _ListaService.BuscarListas(false, idcliente).ToList() ;
+
+            return VS_Listas;
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            gridListas.DataBind();
+        }
+
+        protected void btnNew_Click(object sender, EventArgs e)
+        {
+            Lista lista = new Lista { Id = 0 };
+            UcLista.CarregarDados(lista, Vs_Clientes);
+
+            //ScriptManager.RegisterStartupScript(this, GetType(), "EditLista", "$(document).ready(function(){ openModal('#modalDiv'); }); ", true);            
+        }
+
+        private void UcLista_GravouLista(string mensagem)
+        {
+            labelMessage.Text = AlertMessage.GetMessage("Lista Gravada: " + mensagem, AlertMessage.TipoMensagem.Sucesso);
+            gridListas.DataBind();
         }
     }
 }

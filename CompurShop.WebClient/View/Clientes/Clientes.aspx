@@ -2,6 +2,8 @@
 
 <%@ Register Src="~/View/Clientes/UcClienteView.ascx" TagPrefix="uc1" TagName="UcClienteView" %>
 <%@ Register Src="~/Controls/UcLoader.ascx" TagPrefix="uc1" TagName="UcLoader" %>
+<%@ Register Src="~/Controls/UcMensagem.ascx" TagPrefix="uc2" TagName="UcMensagem" %>
+
 
 <asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
 </asp:Content>
@@ -14,21 +16,23 @@
                 <div class="card-body">
                     <div class="card-title">
                         <div class="row">
-                            <div class="col-sm-12 col-md-4">
+                            <div class="col-sm-12 col-md-3">
                                 <asp:Label ID="labelNome" runat="server" Text="Nome" AssociatedControlID="txtNome"
                                     SkinID="labelItem"></asp:Label>
                                 <asp:TextBox ID="txtNome" runat="server" aria-describedby="basic-addon1"
                                     SkinID="textInput" ReadOnly="false"></asp:TextBox>
                             </div>
-                            <div class="col-sm-12 col-md-4">
+                            <div class="col-sm-12 col-md-3">
                                 <asp:Label ID="labelCpf" runat="server" Text="CPF/CNPJ" AssociatedControlID="txtCpf"
                                     SkinID="labelItem"></asp:Label>
                                 <asp:TextBox ID="txtCpf" runat="server" placeholder="CPF / CNPJ" aria-describedby="basic-addon1"
                                     SkinID="textInput" ReadOnly="false"></asp:TextBox>
                             </div>
-                            <div class="col-sm-12 col-md-2 d-flex align-items-end">
-                                <asp:LinkButton runat="server" ID="btnSearch" Text="Pesquisar" OnClick="BtnPesquisa_Click" SkinID="btPesquisar"></asp:LinkButton>
+                            <div class="col-sm-12 col-md-4 d-flex align-items-end">
+                                <asp:LinkButton runat="server" ID="btnSearch" Text="Pesquisar" OnClick="BtnPesquisa_Click" SkinID="btPesquisar" Style="margin-left:auto;"></asp:LinkButton>
+                                <asp:LinkButton runat="server" ID="btnNew" Text="Novo" OnClick=btnNew_Click SkinID="btNovo"></asp:LinkButton>
                             </div>
+
                             <div class="col-sm-12 col-md-2 d-flex align-items-end">
                                  <asp:Label ID="lblRegistros" runat="server" Text="Linhas" AssociatedControlID="dropLinhas"
                                     SkinID="labelItemSelect"></asp:Label>
@@ -60,12 +64,14 @@
                             <Columns>
                                 <asp:TemplateField HeaderText="" SortExpression="id" ShowHeader="true" HeaderStyle-CssClass="icon-column">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="False" CommandName="cmdEdit" Text="" CssClass="icon-link bi-pencil"></asp:LinkButton>
+                                        <asp:LinkButton ID="btnEdit" runat="server" CausesValidation="False" CommandName="cmdEdit" Text="" 
+                                            CommandArgument='<%# Eval("Id") %>'  CssClass="icon-link bi-pencil"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
                                 <asp:TemplateField HeaderText="" SortExpression="id" ShowHeader="true" HeaderStyle-CssClass="icon-column">
                                     <ItemTemplate>
-                                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="False" CommandName="cmdDelete" Text="" CssClass="icon-link bi-trash"></asp:LinkButton>
+                                        <asp:LinkButton ID="btnDelete" runat="server" CausesValidation="true" CommandName="cmdDelete" Text="" 
+                                            CommandArgument='<%# Eval("Id") %>' CssClass="icon-link bi-trash"></asp:LinkButton>
                                     </ItemTemplate>
                                 </asp:TemplateField>
 
@@ -89,11 +95,16 @@
         <Triggers>
             <asp:PostBackTrigger ControlID="dropLinhas" />
             <asp:PostBackTrigger ControlID="gridClientes" />
+            <asp:PostBackTrigger ControlID="btnNew" />
         </Triggers>
     </asp:UpdatePanel>
 
     <div id="modalDiv" class="modal fade">
         <uc1:UcClienteView runat="server" ID="UcClienteView" />
+    </div>
+
+     <div id="modalDivMensagem" class="modal fade">
+         <uc2:UcMensagem runat="server" id="UcMensagem1" />
     </div>
     
 </asp:Content>

@@ -32,10 +32,9 @@ namespace CompurShop.WebClient
                     "~/Scripts/WebForms/MsAjax/MicrosoftAjaxWebForms.js"));
 
             // bootstrap scripts
-            bundles.Add(new ScriptBundle("~/bundles/BootstrapJs").Include(
-                    "~/Scripts/bootstrap.js",
-                    "~/Scripts/bootstrap.bundle.js",
-                    "~/Scripts/bootstrap.esm.js"));
+            //bundles.Add(new ScriptBundle("~/bundles/BootstrapJs").Include(
+            //        "~/Scripts/bootstrap.js",
+            //        "~/Scripts/bootstrap.bundle.js"));
 
             // Use the Development version of Modernizr to develop with and learn from. Then, when you’re
             // ready for production, use the build tool at https://modernizr.com to pick only the tests you need

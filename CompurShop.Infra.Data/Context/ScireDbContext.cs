@@ -15,6 +15,7 @@ namespace CompurShop.Infra.Data
         public DbSet<Cpf> Cpfs { get; set; }
         public DbSet<Lista> Listas { get; set; }
         public DbSet<Uf> Ufs { get; set; }
+        public DbSet<Usuario> Usuarios { get; set; }
 
     }
 }
