@@ -116,20 +116,21 @@
 
         <aside id="sidebar" class="sidebar">
 
-            <ul class="sidebar-nav" id="sidebar-nav">
+            <%--<ul class="sidebar-nav" id="sidebar-nav">
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-journal-text"></i><span>Cadastros</span><i class="bi bi-chevron-down ms-auto"></i>
+                        <i class="bi bi-journal-text"></i><span>Cadastros</span>
+                        <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li>
-                            <a href="/view/clientes/Clientes.aspx">
+                            <a href="../../View/clientes/Clientes.aspx">
                                 <i class="bi bi-circle"></i><span>Clientes</span>
                             </a>
                         </li>
                         <li>
-                            <a href="/View/Listas/Listas.aspx">
+                            <a href="../../View/Listas/Listas.aspx">
                                 <i class="bi bi-circle"></i><span>Importar Arquivos</span>
                             </a>
                         </li>
@@ -140,8 +141,8 @@
 
                 <li class="nav-item">
                     <a class="nav-link collapsed" data-bs-target="#config-nav" data-bs-toggle="collapse" href="#">
-                        <i class="bi bi-grid"></i><span>Configurações</span>                  <i class="bi bi-chevron-down ms-auto"></i>
-
+                        <i class="bi bi-grid"></i><span>Configurações</span>                  
+                        <i class="bi bi-chevron-down ms-auto"></i>
                     </a>
                     <ul id="config-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                         <li class="nav-item">
@@ -160,7 +161,7 @@
                 </li>
                 <!-- End Configurações Nav -->
 
-            </ul>
+            </ul>--%>
 
         </aside>
         <!-- End Sidebar-->
@@ -170,7 +171,7 @@
                 <h1>
                     <asp:Label runat="server" ID="LabelTitlePage" Text=""></asp:Label>
                 </h1>
-                <asp:SiteMapPath ID="SiteMapPath1" runat="server" CssClass="breadcrumb" RenderCurrentNodeAsLink="false"></asp:SiteMapPath>
+                <asp:SiteMapPath ID="SiteMapPath1" runat="server" CssClass="breadcrumb"  RenderCurrentNodeAsLink="false" PathSeparator=" | "></asp:SiteMapPath>
             </div>
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>

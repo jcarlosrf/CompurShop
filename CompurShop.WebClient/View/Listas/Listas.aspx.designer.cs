@@ -24,6 +24,15 @@ namespace CompurShop.WebClient.View.Listas
         protected global::System.Web.UI.WebControls.Label labelMessage;
 
         /// <summary>
+        /// updcollapse control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updcollapse;
+
+        /// <summary>
         /// label2 control.
         /// </summary>
         /// <remarks>
@@ -60,15 +69,6 @@ namespace CompurShop.WebClient.View.Listas
         protected global::System.Web.UI.WebControls.LinkButton btnNew;
 
         /// <summary>
-        /// gridListas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridListas;
-
-        /// <summary>
         /// UcLista control.
         /// </summary>
         /// <remarks>
@@ -76,5 +76,14 @@ namespace CompurShop.WebClient.View.Listas
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::CompurShop.WebClient.View.Listas.UcLista UcLista;
+
+        /// <summary>
+        /// gridListas control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.GridView gridListas;
     }
 }

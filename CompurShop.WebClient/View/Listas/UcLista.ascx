@@ -4,11 +4,7 @@
 
 <div class="card" style="min-width: 900px">
     <div class="card-header">
-        <h5 class="card-title">
-            <asp:Label runat="server" ID="labelTitulo" Text="Cadastrar Lista de CPFs"></asp:Label>
-        </h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
-        </button>
+         <asp:Label runat="server" ID="labelTitulo" SkinID=labelItem Text="Cadastrar Lista de CPFs"></asp:Label>
     </div>
 
     <div class="card-body">
@@ -38,9 +34,9 @@
 
 
                     <div class="input-wrapper col-sm-12 col-md-4 d-flex align-items-end">
-                        <asp:FileUpload ID="fileUpload" ClientIDMode="Static" runat="server" CssClass="fileload" AllowMultiple="false" Accept=".csv" />
-                        <input type="text" name="file" id="file" class="filetext" placeholder="Arquivo" readonly="readonly" style="margin-bottom: 10px" >
-                        <asp:Button runat="server" CausesValidation="false" CssClass="btnfile" Text="Selecionar" ValidationGroup="VgLista" style="margin-bottom: 10px"
+                        <asp:FileUpload ID="fileUpload" ClientIDMode="Static" runat="server" CssClass="fileload" AllowMultiple="false" Accept=".csv" style="margin-bottom: 15px" />
+                        <input type="text" name="file" id="file" class="filetext" placeholder="Arquivo" readonly="readonly" style="margin-bottom: 15px" >
+                        <asp:Button runat="server" CausesValidation="false" CssClass="btnfile" Text="Selecionar" ValidationGroup="VgLista" style="margin-bottom: 15px"
                             OnClientClick=" $('.fileload').trigger('click');return false; "></asp:Button>
                     </div>
                 </div>
@@ -54,7 +50,8 @@
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="VgLista" Width="100%" />
             </div>
             <div class="col-md-4 d-flex align-items-end">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" style="margin-left: auto; margin-right: 10px">Fechar</button>
+                <button type="button" class="btn btn-secondary" style="margin-left: auto; margin-right: 10px"
+                    onclick="document.getElementById('collapseOne').classList.remove('show'); return false;">Fechar</button>
                 <asp:Button runat="server" ID="btnSave" SkinID="btPrimary" Text="Gravar"
                     OnClick="btnSalvar_Click" CausesValidation="true" ValidationGroup="VgLista" />
             </div>

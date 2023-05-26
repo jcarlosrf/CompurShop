@@ -5,6 +5,7 @@ using CompurShop.WebClient.WebProject;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace CompurShop.WebClient.View.Listas
 {
@@ -130,10 +131,8 @@ namespace CompurShop.WebClient.View.Listas
 
         private async void CarregarCombos()
         {
-            Vs_Clientes = await _CombosService.GetClientes();
-
             listClientesNew.DataSource = Vs_Clientes;
-            listClientesNew.ClearSelection();
+            await Task.Run(()=> listClientesNew.ClearSelection());
             listClientesNew.DataBind();
 
             if (__SessionWEB.IdCliente > 0)

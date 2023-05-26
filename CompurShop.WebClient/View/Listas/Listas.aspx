@@ -4,36 +4,55 @@
 <%@ Register Src="~/View/Listas/UcLista.ascx" TagPrefix="uc2" TagName="UcLista" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="HeadContent" runat="server">
-   <script src="../../Scripts/jquery-3.6.0.min.js"></script>
-    <%--<script src="../../Scripts/Includes/combobox.js"></script> --%>   
-   <%-- <script src="../../Scripts/Includes/fileload.js"></script>--%>
+    <script src="../../Scripts/jquery-3.6.0.min.js"></script>
+    <%--<script src="../../Scripts/Includes/combobox.js"></script> --%>
+    <%-- <script src="../../Scripts/Includes/fileload.js"></script>--%>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:Label ID="labelMessage" runat="server" EnableViewState="False"></asp:Label>
     <div class="card">
 
         <div class="card-title">
-            <div class="row" style="padding: 10px 20px">
-                
-                 <div class="col-sm-12 col-md-4 ui-widget">
-                     <asp:Label ID="label2" runat="server" Text="Cliente" AssociatedControlID="listClientes" Width="100%"
-                                    SkinID="labelItem"></asp:Label>
-                       <asp:ListBox runat="server" ID="listClientes" ClientIDMode=Static AutoPostBack="false" CssClass="form-control" 
-                                DataTextField="nome" AppendDataBoundItems="true" DataValueField="id" ItemType=CompurShop.Domain.Entities.Cliente  >
-                            </asp:ListBox>
-                 </div>
-                
+            <asp:UpdatePanel runat="server" ID="updcollapse" UpdateMode="Always">
+                <ContentTemplate>
+                    <div class="row" style="padding: 10px 20px">
 
-                <div class="col-sm-12 col-md-4 d-flex align-items-end">
-                    <asp:LinkButton runat="server" ID="btnSearch" Text="Pesquisar" OnClick="btnSearch_Click" SkinID="btPesquisar" Style="margin-left: auto;"></asp:LinkButton>
-                    <asp:LinkButton runat="server" ID="btnNew" Text="Novo" OnClick="btnNew_Click" SkinID="btNovo"></asp:LinkButton>
-                </div>
 
-            </div>
+                        <div class="col-sm-12 col-md-4 ui-widget">
+                            <asp:Label ID="label2" runat="server" Text="Cliente" AssociatedControlID="listClientes" Width="100%"
+                                SkinID="labelItem"></asp:Label>
+                            <asp:ListBox runat="server" ID="listClientes" ClientIDMode="Static" AutoPostBack="false" CssClass="form-control"
+                                DataTextField="nome" AppendDataBoundItems="true" DataValueField="id" ItemType="CompurShop.Domain.Entities.Cliente"></asp:ListBox>
+                        </div>
+
+
+                        <div class="col-sm-12 col-md-4 d-flex align-items-end">
+                            <asp:LinkButton runat="server" ID="btnSearch" Text="Pesquisar" OnClick="btnSearch_Click" SkinID="btPesquisar" Style="margin-left: auto;"></asp:LinkButton>
+                            <asp:LinkButton runat="server" ID="btnNew" Text="Novo" OnClick="btnNew_Click"
+                                SkinID="btNovo" CausesValidation="false">                                
+                            </asp:LinkButton>
+                        </div>
+
+                    </div>
+                </ContentTemplate> 
+                <Triggers>
+                    <asp:PostBackTrigger ControlID="btnNew" />
+                </Triggers>
+            </asp:UpdatePanel>           
 
         </div>
 
         <div class="card-body">
+            <div id="cadastroDiv">
+                <div class="accordion" id="accordionExample">
+                    <div class="accordion-item">
+                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                            <uc2:UcLista runat="server" ID="UcLista" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <%--PageSize="10" Visible="true"--%>
             <asp:GridView ID="gridListas" runat="server" AutoGenerateColumns="False"
                 AllowPaging="false"
@@ -80,9 +99,5 @@
                 </Columns>
             </asp:GridView>
         </div>
-    </div>
-
-    <div id="cadastroDiv" class="card">
-        <uc2:UcLista runat="server" id="UcLista" />
     </div>
 </asp:Content>

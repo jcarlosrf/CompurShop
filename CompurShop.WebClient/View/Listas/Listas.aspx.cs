@@ -81,6 +81,10 @@ namespace CompurShop.WebClient.View.Listas
         private async void CarregarCombos()
         {
             Vs_Clientes = await _CombosService.GetClientes();
+            if (__SessionWEB.IdCliente > 0)
+            {
+                Vs_Clientes = Vs_Clientes.Where(c => c.Id == __SessionWEB.IdCliente).ToList();
+            }
 
             listClientes.DataSource = Vs_Clientes;
             listClientes.ClearSelection();
@@ -171,13 +175,15 @@ namespace CompurShop.WebClient.View.Listas
             Lista lista = new Lista { Id = 0 };
             UcLista.CarregarDados(lista, Vs_Clientes);
 
-            //ScriptManager.RegisterStartupScript(this, GetType(), "EditLista", "$(document).ready(function(){ openModal('#modalDiv'); }); ", true);            
+            ScriptManager.RegisterStartupScript(this, GetType(), "EditLista", "document.getElementById('collapseOne').classList.add('fade'); document.getElementById('collapseOne').classList.add('show');", true);
+
         }
 
         private void UcLista_GravouLista(string mensagem)
         {
             labelMessage.Text = AlertMessage.GetMessage("Lista Gravada: " + mensagem, AlertMessage.TipoMensagem.Sucesso);
             gridListas.DataBind();
+            ScriptManager.RegisterStartupScript(this, GetType(), "EditLista", "document.getElementById('collapseOne').classList.remove('show');", true);
         }
     }
 }
