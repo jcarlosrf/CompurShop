@@ -1,11 +1,7 @@
-﻿using CompurShop.Domain.Interfaces;
-using CompurShop.Domain.Services;
-using CompurShop.Infra.Data;
-using CompurShop.Infra.Data.Repositories;
-using System.Web;
+﻿using Scire.Arquivos.Infra;
 using Unity;
 
-namespace CompurShop.WebClient.App_Start
+namespace Scire.Arquivos
 {
     public static class DependencyConfig
     {
@@ -15,23 +11,16 @@ namespace CompurShop.WebClient.App_Start
             container = new UnityContainer();
 
             // Registrando as dependências
-            container.RegisterType<ScireDbContext>();
-
+            container.RegisterType<ScireWsDbContext>();
 
             //servicos
-            container.RegisterType<ClienteService>();
             container.RegisterType<ListaService>();
-            container.RegisterType<CombosService>();
-            container.RegisterType<UsuarioService>();
 
 
             // Repositorios
-            container.RegisterType<IClienteRepository, ClienteRepository>();
             container.RegisterType<IListaReporsitory, ListaReporsitory>();
             container.RegisterType<IListaArquivoRepository, ListaArquivoRepository>();
             container.RegisterType<ICpfsRepository, CpfsRepository>();
-            container.RegisterType<IUfRepository, UfRepository>();
-            container.RegisterType<IUsuarioRepository, UsuarioRepository>();
         }
 
         public static T Resolve<T>()
@@ -40,5 +29,3 @@ namespace CompurShop.WebClient.App_Start
         }
     }
 }
-
-

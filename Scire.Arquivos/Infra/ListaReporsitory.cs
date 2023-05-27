@@ -1,17 +1,15 @@
-﻿using CompurShop.Domain.Entities;
-using CompurShop.Domain.Interfaces;
-using System;
+﻿using System;
 using System.Linq;
 
 
 
-namespace CompurShop.Infra.Data.Repositories
+namespace Scire.Arquivos.Infra
 {
     public class ListaReporsitory : IListaReporsitory
     {
-        private readonly ScireDbContext _context;
+        private readonly ScireWsDbContext _context;
 
-        public ListaReporsitory(ScireDbContext context)
+        public ListaReporsitory(ScireWsDbContext context)
         {
             _context = context;
         }

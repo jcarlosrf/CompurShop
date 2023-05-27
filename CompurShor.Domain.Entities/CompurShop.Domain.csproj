@@ -49,6 +49,7 @@
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Interfaces\IClientRepository.cs" />
     <Compile Include="Interfaces\ICpfsRepository.cs" />
+    <Compile Include="Interfaces\IListaArquivoRepository.cs" />
     <Compile Include="Interfaces\IListaReporsitory.cs" />
     <Compile Include="Interfaces\IUfRepository.cs" />
     <Compile Include="Interfaces\IUsuarioRepository.cs" />

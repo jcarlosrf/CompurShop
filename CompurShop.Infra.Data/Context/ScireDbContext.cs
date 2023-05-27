@@ -9,6 +9,7 @@ namespace CompurShop.Infra.Data
         public ScireDbContext()
                      : base("CompuConnectionString")
         {
+
         }
 
         public DbSet<Cliente> Clientes { get; set; }
@@ -16,6 +17,7 @@ namespace CompurShop.Infra.Data
         public DbSet<Lista> Listas { get; set; }
         public DbSet<Uf> Ufs { get; set; }
         public DbSet<Usuario> Usuarios { get; set; }
+        public DbSet<ListaArquivo> ListasArquivos { get; set; }
 
     }
 }

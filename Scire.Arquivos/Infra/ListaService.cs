@@ -1,41 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
-using CompurShop.Domain.Interfaces;
-using CompurShop.Domain.Entities;
 using System.Linq;
 
-namespace CompurShop.Domain.Services
+namespace Scire.Arquivos.Infra
 {
     public class ListaService
     {
         private readonly IListaReporsitory _ListaRepository;
         private readonly IListaArquivoRepository _ListaArquivosRepository;
         private readonly ICpfsRepository _CpfRepository;
-        private readonly IClienteRepository _ClienteRepository;
 
 
-        public ListaService(IListaReporsitory listaRepository, ICpfsRepository cpfsRepository, IClienteRepository clienteRepository, IListaArquivoRepository listaArquivoRepository)
+        public ListaService(IListaReporsitory listaRepository, ICpfsRepository cpfsRepository, IListaArquivoRepository listaArquivoRepository)
         {
             _ListaRepository = listaRepository;
             _CpfRepository = cpfsRepository;
-            _ClienteRepository = clienteRepository;
             _ListaArquivosRepository = listaArquivoRepository;
-        }
-        public IEnumerable<Lista> BuscarListas(bool carregarCliente, int idcliente)
-        {
-            var listas = _ListaRepository.GetListasByCliente(idcliente).OrderByDescending(l => l.Datahora).ToList();
-            
-            foreach (var lista in listas)
-            {
-                lista.QtdeCpfs = _CpfRepository.GetQtdeCpfLista(lista.Id);
-                if (lista.IdCliente > 0 && carregarCliente)
-                {
-                    lista.Cliente = _ClienteRepository.GetEntity(lista.IdCliente);
-                }
-            }
-
-            return listas;
-        }
+        }       
 
         public Lista GetListaById(int idLista)
         {

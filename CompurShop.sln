@@ -17,6 +17,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompurShop.Infra.Data", "Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompurShop.Domain.Services", "CompurShop.Domain.Services\CompurShop.Domain.Services.csproj", "{6928B52C-2448-4D47-9D70-CACF7AC5A395}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - WindowsService", "4 - WindowsService", "{CC5A483B-FDCE-4476-BA8A-C03A1E53E951}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Scire.Arquivos", "Scire.Arquivos\Scire.Arquivos.csproj", "{ADECF23C-081D-4B69-9C2F-49070655384B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,10 @@ Global
 		{6928B52C-2448-4D47-9D70-CACF7AC5A395}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6928B52C-2448-4D47-9D70-CACF7AC5A395}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6928B52C-2448-4D47-9D70-CACF7AC5A395}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ADECF23C-081D-4B69-9C2F-49070655384B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ADECF23C-081D-4B69-9C2F-49070655384B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ADECF23C-081D-4B69-9C2F-49070655384B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ADECF23C-081D-4B69-9C2F-49070655384B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -48,6 +56,7 @@ Global
 		{4A7BDA27-4336-49A5-AAD2-2B206CAEC261} = {50676AC5-D847-423F-B8B4-CDF6BEBE31DF}
 		{E72F065C-9EF3-4BAF-AE60-E4C80112682F} = {2B3F1DC0-9265-4F74-B4CD-A6D8206AF5F3}
 		{6928B52C-2448-4D47-9D70-CACF7AC5A395} = {50676AC5-D847-423F-B8B4-CDF6BEBE31DF}
+		{ADECF23C-081D-4B69-9C2F-49070655384B} = {CC5A483B-FDCE-4476-BA8A-C03A1E53E951}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BEC5462D-747E-4D62-B449-DCB3056F9FCF}

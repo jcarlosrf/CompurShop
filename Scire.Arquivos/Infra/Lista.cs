@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CompurShop.Domain.Entities
+namespace Scire.Arquivos.Infra
 {
     [Serializable]
     [Table("listas", Schema = "public")]
@@ -27,9 +26,6 @@ namespace CompurShop.Domain.Entities
 
         [Column("status")]
         public int Status { get; set; }
-
-        [NotMapped]
-        public Cliente Cliente { get; set; }
 
 
         [NotMapped] // Ignorar a coluna Tipo no mapeamento da tabela
