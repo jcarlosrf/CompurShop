@@ -4,6 +4,7 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using CompurShop.Domain.Entities;
+using System.Threading.Tasks;
 
 namespace CompurShop.WebClient.WebProject
 {
@@ -35,29 +36,37 @@ namespace CompurShop.WebClient.WebProject
             }
         }
 
-        public static void DownloadCSV(string filename)
+        public static void Download(string filename)
         {
-            // Definir o caminho e nome do arquivo CSV            
             string caminhoArquivo = HttpContext.Current.Server.MapPath("~/Download/" + filename);
 
-            // Preparar a resposta HTTP para download
-            HttpContext.Current.Response.Clear();
-            HttpContext.Current.Response.ContentType = "application/octet-stream";
-            HttpContext.Current.Response.AddHeader("Content-Disposition", $"attachment; filename=\"{filename}\"");
-
-            // Escrever o conteúdo do arquivo CSV na resposta HTTP
-            using (FileStream fs = new FileStream(caminhoArquivo, FileMode.Open))
+            try
             {
-                byte[] buffer = new byte[4096];
-                int bytesRead;
-                while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) > 0)
-                {
-                    HttpContext.Current.Response.OutputStream.Write(buffer, 0, bytesRead);
-                    HttpContext.Current.Response.Flush();
-                }
-            }
+                // Preparar a resposta HTTP para download
+                HttpContext.Current.Response.Clear();
+                HttpContext.Current.Response.ContentType = "application/octet-stream";
+                HttpContext.Current.Response.AddHeader("Content-Disposition", $"attachment; filename=\"{filename}\"");
 
-            HttpContext.Current.Response.End();
+                // Escrever o conteúdo do arquivo CSV na resposta HTTP
+                using (FileStream fs = new FileStream(caminhoArquivo, FileMode.Open))
+                {
+                    byte[] buffer = new byte[4096];
+                    int bytesRead;
+                    while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        HttpContext.Current.Response.OutputStream.Write(buffer, 0, bytesRead);
+                        HttpContext.Current.Response.Flush();
+                    }
+                }
+                File.Delete(caminhoArquivo);
+
+               HttpContext.Current.Response.End();
+            }
+            finally
+            {
+                if (File.Exists(caminhoArquivo))
+                    File.Delete(caminhoArquivo);
+            }
         }
     }
 }

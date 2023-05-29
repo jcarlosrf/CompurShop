@@ -29,7 +29,11 @@ namespace CompurShop.Domain.Services
         {
             var clientes = await Task.Run(() => _clienteRepository.GetClientesByNome(string.Empty, string.Empty, 0, 0, out int registros));
 
-            return clientes.OrderBy(c=>c.Nome).ToList();
+            List<Cliente> retorno = new List<Cliente>();
+            retorno.Add(new Cliente { Id = 0, Nome = "<< Selecione >>" });
+            retorno.AddRange(clientes);
+
+            return retorno.OrderBy(c=>c.Nome).ToList();
         }
     }
 }

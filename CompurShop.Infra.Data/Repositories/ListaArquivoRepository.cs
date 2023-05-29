@@ -1,6 +1,7 @@
 ﻿using CompurShop.Domain.Entities;
 using CompurShop.Domain.Interfaces;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CompurShop.Infra.Data.Repositories
@@ -41,6 +42,15 @@ namespace CompurShop.Infra.Data.Repositories
             {
                 throw ex;
             }
+        }
+
+
+        public List<ListaArquivo> GetByIdLista(int idlista)
+        {
+            var query = _context.ListasArquivos
+                .Where(l => l.IdLista.Equals(idlista))
+                .OrderBy(l=> l.NomeArquivo);
+            return query.ToList();
         }
     }
 }

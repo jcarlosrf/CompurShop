@@ -288,6 +288,7 @@
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="View\Clientes\Clientes.aspx" />
     <Content Include="View\Clientes\UcClienteView.ascx" />
+    <Content Include="View\Listas\ListaArquivosDownload.aspx" />
     <Content Include="View\Listas\Listas.aspx" />
     <Content Include="View\Listas\UcLista.ascx" />
     <Content Include="Web.config" />
@@ -367,6 +368,13 @@
     </Compile>
     <Compile Include="View\Clientes\UcClienteView.ascx.designer.cs">
       <DependentUpon>UcClienteView.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Listas\ListaArquivosDownload.aspx.cs">
+      <DependentUpon>ListaArquivosDownload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Listas\ListaArquivosDownload.aspx.designer.cs">
+      <DependentUpon>ListaArquivosDownload.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Listas\Listas.aspx.cs">
       <DependentUpon>Listas.aspx</DependentUpon>

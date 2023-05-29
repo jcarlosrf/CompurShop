@@ -19,5 +19,8 @@ namespace CompurShop.Domain.Entities
         [Required]
         [Column("idlista")]
         public int IdLista { get; set; }
+
+        [ForeignKey("IdLista")]
+        public virtual Lista Lista { get; set; }
     }
 }

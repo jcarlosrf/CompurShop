@@ -27,10 +27,11 @@ namespace CompurShop.Domain.Entities
 
         [Column("status")]
         public int Status { get; set; }
+               
+        public virtual ICollection<Cpf> Cpfs { get; set; }
 
         [NotMapped]
         public Cliente Cliente { get; set; }
-
 
         [NotMapped] // Ignorar a coluna Tipo no mapeamento da tabela
         public int QtdeCpfs { get; set; }

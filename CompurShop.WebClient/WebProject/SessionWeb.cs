@@ -8,10 +8,11 @@ namespace CompurShop.WebClient.WebProject
     [Serializable]
     public class SessionWEB
     {
-        private string usuarioLogado = string.Empty;
-        private int idnivel = 0;
-        private int idcliente = 0;
-        private string postMessages = string.Empty;
+        private string usuarioLogado;
+        private int idnivel;
+        private int idcliente;
+        private string postMessages ;
+        private object postObject ;
         public const string SessSessionWEB = "SSessionWEB";
 
         /// <summary>
@@ -75,6 +76,25 @@ namespace CompurShop.WebClient.WebProject
             set
             {
                 postMessages = value;
+            }
+        }
+
+        public object PostObject
+        {
+            get
+            {
+                try
+                {
+                    return postObject;
+                }
+                finally
+                {
+                   // postObject = null;
+                }
+            }
+            set
+            {
+                postObject = value;
             }
         }
     }

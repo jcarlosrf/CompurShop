@@ -23,11 +23,11 @@ namespace CompurShop.Domain.Services
         }
         public IEnumerable<Lista> BuscarListas(bool carregarCliente, int idcliente)
         {
-            var listas = _ListaRepository.GetListasByCliente(idcliente).OrderByDescending(l => l.Datahora).ToList();
+            var listas = _ListaRepository.GetListasByCliente(idcliente);
             
             foreach (var lista in listas)
             {
-                lista.QtdeCpfs = _CpfRepository.GetQtdeCpfLista(lista.Id);
+                //lista.QtdeCpfs = _CpfRepository.GetQtdeCpfLista(lista.Id);
                 if (lista.IdCliente > 0 && carregarCliente)
                 {
                     lista.Cliente = _ClienteRepository.GetEntity(lista.IdCliente);
@@ -37,10 +37,30 @@ namespace CompurShop.Domain.Services
             return listas;
         }
 
+        #region Buscas de Listas
+
         public Lista GetListaById(int idLista)
         {
             return _ListaRepository.GetEntity(idLista);
         }
+
+        public List<Lista> GetListaByStatus(int status)
+        {
+            var listas = _ListaRepository.GetListas().Where(l => l.Status.Equals(status)).ToList();
+            return listas;
+        }
+
+        #endregion
+
+        #region Buscas CPF
+        public List<Cpf> CpfPorLista(int idlista)
+        {
+            return _CpfRepository.GetCpfLista(idlista);
+        }
+
+        #endregion
+
+        #region Gravacao Lista
 
         public Lista PreparaLista(string nome)
         {
@@ -51,11 +71,7 @@ namespace CompurShop.Domain.Services
             minhalista.Datahora = DateTime.Now;
             return minhalista;
         }
-        public List<Cpf> CpfPorLista(int idlista)
-        {
-            return _CpfRepository.GetCpfLista(idlista);
-        }
-
+        
         public int GravarLista(Lista lista)
         {
             string cpfs = lista.CpfsLista;
@@ -78,16 +94,21 @@ namespace CompurShop.Domain.Services
             return _ListaRepository.SaveLista(lista);
         }
 
+        #endregion
 
-        public List<Lista> GetListaByStatus(int status)
-        {
-            var listas =  _ListaRepository.GetListas().Where(l => l.Status.Equals(status)).ToList();
-            return listas;
-        }
+        #region ListaArquivos
 
         public int GravarListaArquivo(ListaArquivo lista)
         {
             return _ListaArquivosRepository.SaveLista(lista);
         }
+
+        public List<ListaArquivo> BuscarArquivosPorLista(int idlista)
+        {
+            var arquivos = _ListaArquivosRepository.GetByIdLista(idlista);
+            return arquivos;
+        }
+
+        #endregion
     }
 }

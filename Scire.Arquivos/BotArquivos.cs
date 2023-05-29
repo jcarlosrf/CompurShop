@@ -47,7 +47,7 @@ namespace Scire.Arquivos
                 foreach (var cpf in Cpfs)
                 {
                     string nomePasta = ArquivosPath + cpf.Nome.Trim().PadLeft(11, '0');
-                    Console.WriteLine(string.Format("Nome {0} Arquivos {1} CPFs {2}", nomePasta, contadorArquivo, contadorCpfs));
+                    //Console.WriteLine(string.Format("Nome {0} Arquivos {1} CPFs {2}", nomePasta, contadorArquivo, contadorCpfs));
                     if (Directory.Exists(nomePasta))
                     {
                         if (!criouArquivo)

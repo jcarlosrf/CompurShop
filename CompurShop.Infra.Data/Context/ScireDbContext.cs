@@ -9,7 +9,7 @@ namespace CompurShop.Infra.Data
         public ScireDbContext()
                      : base("CompuConnectionString")
         {
-
+            Configuration.LazyLoadingEnabled = false;
         }
 
         public DbSet<Cliente> Clientes { get; set; }

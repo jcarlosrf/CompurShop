@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
- 
-  
+
+
   <siteMapNode url="Default.aspx" title="Home Page"  description="Home Page" roles="2">
     <siteMapNode title="Cadastros" roles="2" resourceKey="bi bi-journal-text" description="forms-nav" >
-    <siteMapNode url="View/Clientes/Clientes" title="Clientes"  description="Cadastro de Clientes" roles="1" >
+      <siteMapNode url="View/Clientes/Clientes" title="Clientes"  description="Cadastro de Clientes" roles="1" >
+      </siteMapNode>
+      <siteMapNode url="View/Listas/Listas" title="Gestão de Arquivos"  description="Importar e exportar arquivos de CPFs" roles="2" >
+        <siteMapNode url="View/Listas/ListasArquivosDownload" title="Download"  description="Download de documentos" roles="0" ></siteMapNode>
+      </siteMapNode>
     </siteMapNode>
-    <siteMapNode url="View/Listas/Listas" title="Gestão de Arquivos"  description="Importar e exportar arquivos de CPFs" roles="2" >
-    </siteMapNode>
-     </siteMapNode>
-
     <siteMapNode title="Configurações" roles="1" resourceKey="bi bi-grid" description="config-nav" >
       <siteMapNode url="View/Clientes/Usuario.aspx" title="Usuários"  description="Cadastro de Usuários" roles="1" />
-    </siteMapNode>    
+    </siteMapNode>
   </siteMapNode>
 
- 
+
 </siteMap>

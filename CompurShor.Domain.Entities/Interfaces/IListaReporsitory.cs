@@ -10,7 +10,7 @@ namespace CompurShop.Domain.Interfaces
 
         IQueryable<Lista> GetListas();
 
-        IQueryable<Lista> GetListasByCliente(int idcliente);
+        List<Lista> GetListasByCliente(int idcliente);
 
         int SaveLista(Lista lista);
     }

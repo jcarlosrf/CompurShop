@@ -50,8 +50,7 @@
                 <asp:ValidationSummary ID="ValidationSummary1" runat="server" ValidationGroup="VgLista" Width="100%" />
             </div>
             <div class="col-md-4 d-flex align-items-end">
-                <button type="button" class="btn btn-secondary" style="margin-left: auto; margin-right: 10px"
-                    onclick="document.getElementById('collapseOne').classList.remove('show'); return false;">Fechar</button>
+                <asp:Button runat="server" ID="btnFechar" Text="Fechar" class="btn btn-secondary" style="margin-left: auto; margin-right: 10px" OnClick="btnFechar_Click" />
                 <asp:Button runat="server" ID="btnSave" SkinID="btPrimary" Text="Gravar"
                     OnClick="btnSalvar_Click" CausesValidation="true" ValidationGroup="VgLista" />
             </div>

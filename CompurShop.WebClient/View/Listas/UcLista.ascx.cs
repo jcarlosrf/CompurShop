@@ -134,12 +134,19 @@ namespace CompurShop.WebClient.View.Listas
             listClientesNew.DataSource = Vs_Clientes;
             await Task.Run(()=> listClientesNew.ClearSelection());
             listClientesNew.DataBind();
+            listClientesNew.SelectedValue = "0";
+
 
             if (__SessionWEB.IdCliente > 0)
             {
                 listClientesNew.SelectedValue = __SessionWEB.IdCliente.ToString();
                 listClientesNew.Enabled = false;
             }
+        }
+
+        protected void btnFechar_Click(object sender, EventArgs e)
+        {
+            GravouLista(string.Empty);
         }
     }
 }

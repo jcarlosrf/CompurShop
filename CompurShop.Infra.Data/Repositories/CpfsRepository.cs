@@ -18,9 +18,9 @@ namespace CompurShop.Infra.Data.Repositories
 
         public int GetQtdeCpfLista(int idlista)
         {
-            var query = _context.Cpfs.Count(c => c.IdLista == idlista);
+            var query = _context.Cpfs.Where(c => c.IdLista == idlista);
 
-            return query;
+            return query.Count(); 
         }
 
 

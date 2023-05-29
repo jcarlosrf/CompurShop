@@ -24,6 +24,13 @@ namespace CompurShop.WebClient
 
         protected override void OnInit(EventArgs e)
         {
+#if (DEBUG)
+
+            if(__SessionWEB == null)
+            __SessionWEB = new SessionWEB() { IdNivel = 1, IdCliente = 0, UsuarioLogado = "#debug" };
+            
+#endif
+
             if (__SessionWEB == null)
             {
                 try
@@ -48,6 +55,7 @@ namespace CompurShop.WebClient
                     HttpContext.Current.ApplicationInstance.CompleteRequest();
                 }
             }
+
         }
 
 
@@ -107,17 +115,7 @@ namespace CompurShop.WebClient
                 if (node != null && node.Url != null)
                 {
                     string iditem = node.Description;
-                    string iconmenu = node.ResourceKey;
-                    //if (node.Title.Equals("Cadastros"))
-                    //{
-                    //    iditem = "forms-nav";
-                    //    iconmenu = "bi bi-journal-text";
-                    //}
-                    //else if (node.Title.Equals("Configurações"))
-                    //{
-                    //    iditem = "config-nav";
-                    //    iconmenu = "bi bi-grid";
-                    //}
+                    string iconmenu = node.ResourceKey;                   
 
                     var listItem = new HtmlGenericControl("li");
                     listItem.Attributes.Add("class", "nav-item");

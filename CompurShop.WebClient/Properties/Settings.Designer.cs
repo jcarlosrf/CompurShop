@@ -25,10 +25,10 @@ namespace CompurShop.WebClient.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        public string Setting {
+        [global::System.Configuration.DefaultSettingValueAttribute("P:\\ArquivosGerados\\")]
+        public string PastaArquivos {
             get {
-                return ((string)(this["Setting"]));
+                return ((string)(this["PastaArquivos"]));
             }
         }
     }
