@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Npgsql;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Scire.Arquivos.Infra
 {
@@ -11,33 +14,67 @@ namespace Scire.Arquivos.Infra
             _context = context;
         }
 
-        public int SaveLista(ListaArquivo lista)
+        public int SaveListas(List<ListaArquivo> listas, int idlista, string criticas)
         {
             try
             {
-                if (lista.Id == 0)
+                using (var contexto = new ScireWsDbContext())
                 {
-                    _context.ListasArquivos.Add(lista);
-                }
-                else
-                {
-                    var existingCliente = _context.ListasArquivos.Find(lista.Id);
-                    if (existingCliente != null)
-                    {
-                        existingCliente.NomeArquivo = lista.NomeArquivo;
-                        existingCliente.IdLista = lista.IdLista;
-                        existingCliente.QtdeCpfs = lista.QtdeCpfs;
+                    foreach (var lista in listas) { 
+
+                        contexto.ListasArquivos.Add(lista);
                     }
+
+                    var existingCliente = contexto.Listas.Find(idlista);
+                    if (existingCliente != null)
+                    {                        
+                        existingCliente.Status = 2;
+                    }
+
+                    contexto.SaveChanges();
+                    AtualizarCriticas(criticas, idlista, contexto);
                 }
 
-                _context.SaveChanges();
-
-                return lista.Id;
+                return idlista;
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw ex;                
+            }
+        }
+
+        private int AtualizarCriticas(string cpfscriticas, int idlista, ScireWsDbContext contexto)
+        {
+            var filePathParameter = new Npgsql.NpgsqlParameter("@cpfs_text", NpgsqlTypes.NpgsqlDbType.Text)
+            {
+                Value = cpfscriticas
+            };
+
+            var idListaParameter = new Npgsql.NpgsqlParameter("@pidlista", NpgsqlTypes.NpgsqlDbType.Integer)
+            {
+                Value = idlista
+            };
+
+            // Chama a função count_cpfs_in_file do PostgreSQL
+            using (var command = _context.Database.Connection.CreateCommand())
+            {
+                if (command.Connection.State != System.Data.ConnectionState.Open)
+                    command.Connection.Open();
+
+                command.CommandText = "SELECT scire_cpfs_updatecritica(@cpfs_text, @pidlista)";
+                command.Parameters.Add(filePathParameter);
+                command.Parameters.Add(idListaParameter);
+                if (_context.Database.Connection.State == System.Data.ConnectionState.Closed)
+                    _context.Database.Connection.Open();
+
+                if (command.Connection.State != System.Data.ConnectionState.Open)
+                    command.Connection.Open();
+
+                var result = command.ExecuteNonQuery();
+                                
+                return result;
             }
         }
     }
+
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Scire.Arquivos.Infra
 {
@@ -50,25 +51,29 @@ namespace Scire.Arquivos.Infra
             return qtdecpfs;
         }
 
-        public int UpdateStatus(int idlista, int status)
+        public Lista UpdateStatus(int idlista, int status)
         {
             var lista = _ListaRepository.GetEntity(idlista);
 
             lista.Status = status;
 
-            return _ListaRepository.SaveLista(lista);
+            _ListaRepository.SaveLista(lista);
+
+            return lista;
         }
 
 
         public List<Lista> GetListaByStatus(int status)
         {
-            var listas =  _ListaRepository.GetListas().Where(l => l.Status.Equals(status)).ToList();
+            var listas = _ListaRepository.GetListas().Where(l => l.Status.Equals(status)).ToList();
             return listas;
         }
 
-        public int GravarListaArquivo(ListaArquivo lista)
+        public int GravarListaArquivo(List<ListaArquivo> listasArquivos, int idlista, List<string> criticas)
         {
-            return _ListaArquivosRepository.SaveLista(lista);
+            string criticasString = string.Join(";", criticas);
+
+            return _ListaArquivosRepository.SaveListas(listasArquivos, idlista, criticasString);
         }
     }
 }

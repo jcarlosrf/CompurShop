@@ -24,11 +24,10 @@ namespace Scire.Arquivos.Infra
 
         public List<Cpf> GetCpfLista(int idlista)
         {
-            var query = _context.Cpfs.Where(c => c.IdLista == idlista);
+            var query = _context.Cpfs.Where(c => c.IdLista == idlista).OrderBy(c => c.Nome);
 
             return query.ToList();
         }
-
         
 
         public int GetQtdeCpf(string cpf)
@@ -37,7 +36,6 @@ namespace Scire.Arquivos.Infra
 
             return query;
         }
-
 
         public int GetQtdeCpfInFile(string cpfFileContent)
         {            

@@ -53,7 +53,7 @@ namespace CompurShop.Domain.Entities
         {
             get
             {
-                return Status == 1;
+                return Status == 1 || Status == 3;
             }
         }
 

@@ -1,7 +1,9 @@
-﻿namespace Scire.Arquivos.Infra
+﻿using System.Collections.Generic;
+
+namespace Scire.Arquivos.Infra
 {
     public interface IListaArquivoRepository
     {
-        int SaveLista(ListaArquivo lista);
+        int SaveListas(List<ListaArquivo> lista, int idlista, string criticas);
     }
 }

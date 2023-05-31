@@ -4,12 +4,11 @@ using CompurShop.WebClient.App_Start;
 using CompurShop.WebClient.WebProject;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Web.UI.WebControls;
 using System.Linq;
-using System.Web.UI;
-using System.Web;
 using System.Threading.Tasks;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace CompurShop.WebClient.View.Listas
 {
@@ -255,14 +254,14 @@ namespace CompurShop.WebClient.View.Listas
             {
                 Timer1.Enabled = false;
 
-                var listaProcessando = await Task.Run(() => VS_Listas.Where(l => l.Status == 1).ToList());
+                var listaProcessando = await Task.Run(() => VS_Listas.Where(l => l.Status == 1 || l.Status == 3).ToList());
                 bool atualizar = false;
 
                 foreach (var lista in listaProcessando)
                 {
                     var newlista = _ListaService.GetListaById(lista.Id);
 
-                    if (newlista.Status != 1)
+                    if (newlista.Status != 1 && newlista.Status != 3)
                     {
                         lista.Status = newlista.Status;
                         atualizar = true;

@@ -23,7 +23,7 @@ namespace Scire.Arquivos
         protected override void OnStart(string[] args)
         {           
 
-            timer = new Timer(30000);
+            timer = new Timer(60000);
             timer.Elapsed += TimerElapsed;
             timer.AutoReset = true;
             timer.Start();

@@ -25,23 +25,25 @@ namespace Scire.Arquivos.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("P:\\\\")]
+        [global::System.Configuration.DefaultSettingValueAttribute("10")]
+        public int QtdePorArqiovo {
+            get {
+                return ((int)(this["QtdePorArqiovo"]));
+            }
+            set {
+                this["QtdePorArqiovo"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("P:\\")]
         public string Pasta {
             get {
                 return ((string)(this["Pasta"]));
             }
             set {
                 this["Pasta"] = value;
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("testestr")]
-        public string Setting {
-            get {
-                return ((string)(this["Setting"]));
             }
         }
     }
