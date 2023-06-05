@@ -75,10 +75,10 @@ namespace CompurShop.WebClient
                     labelUser.Text = __SessionWEB.UsuarioLogado;
                     labelUserDetalhe.Text = __SessionWEB.UsuarioLogado;
                     labelNivel.Text = string.Format("Nivel: {0} - Cliente: {1}", __SessionWEB.IdNivel, __SessionWEB.IdCliente);
-                }
-
-                BuildMenuFromSiteMap();
+                }               
             }
+
+            BuildMenuFromSiteMap();
         }
 
         private void BuildMenuFromSiteMap()
@@ -189,7 +189,10 @@ namespace CompurShop.WebClient
             }
         }
 
-
-
+        protected void btnLogout_Click(object sender, EventArgs e)
+        {
+            __SessionWEB = new SessionWEB();
+            HttpContext.Current.Response.Redirect("~\\Login\\login.aspx", true);
+        }
     }
 }

@@ -114,7 +114,7 @@ namespace CompurShop.WebClient.View.Listas
             }
         }
 
-        private async void DownaloadCsv(GridViewCommandEventArgs e)
+        private async void DownaloadCsv(GridViewCommandEventArgs e, bool criticas)
         {
             try
             {
@@ -127,7 +127,8 @@ namespace CompurShop.WebClient.View.Listas
                     return;
                 }
 
-                List<Cpf> cpfs = _ListaService.CpfPorLista(MinhaLista.Id);
+                List<Cpf> cpfs = _ListaService.CpfPorLista(MinhaLista.Id, criticas);
+
 
                 string FileName = string.Format("Lista{0}_{1}.csv", MinhaLista.Nome, DateTime.Now.ToString("yyyyMMddHHmmss"));
 
@@ -156,7 +157,11 @@ namespace CompurShop.WebClient.View.Listas
         {
             if (e.CommandName == "btnFile")
             {
-                DownaloadCsv(e);
+                DownaloadCsv(e, false);
+            }
+            else if (e.CommandName == "btnCriticas")
+            {
+                DownaloadCsv(e, true);
             }
             else if (e.CommandName == "btnProcessar")
             {

@@ -22,5 +22,9 @@ namespace CompurShop.Domain.Entities
 
         [ForeignKey("IdLista")]
         public virtual Lista Lista { get; set; }
+
+        [Column("critica")]
+        public bool critica { get; set; }
+
     }
 }

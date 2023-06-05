@@ -133,13 +133,16 @@ body {
     margin-left: auto;
 }
 
-icon-btn {
+.icon-btn {
     color: #242745;
-    text-decoration: none;
-    font-weight: bold;
-    margin-right: auto;
-    margin-left: 0px;
+    margin-right: 0;
+    margin-left: 0;
 }
+    .icon-btn::before {
+        margin-right: 10px;
+        color: #242745;
+        font-size: 18px;
+    }
 
 
 .alert-dismissible{ padding: 14px; }

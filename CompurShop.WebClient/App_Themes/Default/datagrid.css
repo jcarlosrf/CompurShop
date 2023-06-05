@@ -11,6 +11,14 @@ a.icon-link {
     margin-left: 6px;
 }
 
+a.icon-link-red {
+    color: #a52c20;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 6px;
+    margin-left: 6px;
+}
+
 /* GRID ***********************************************************/
 
 .grid {

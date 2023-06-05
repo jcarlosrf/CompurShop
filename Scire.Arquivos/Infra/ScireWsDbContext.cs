@@ -24,11 +24,9 @@ namespace Scire.Arquivos.Infra
                 Port = 5432,
                 Database = "compurshop",
                 Username = "postgres",
-                Password = "1234"
+                Password = "1234",
+                ApplicationName = "Scire.Serviço"
             };
-
-            NpgsqlConnection connection = new NpgsqlConnection(builder.ToString());
-            connection.Open();
 
             return builder.ConnectionString;
         }

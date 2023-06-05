@@ -80,6 +80,17 @@
                                     </ContentTemplate>
                                 </ItemTemplate>
                             </asp:TemplateField>
+
+                             <asp:TemplateField HeaderText="Críticas (.csv)" SortExpression="id" ShowHeader="true" ItemStyle-HorizontalAlign="Center">
+                                <ItemTemplate>
+                                    <asp:LinkButton ID="btnFileCriticas" runat="server" CausesValidation="False"
+                                        CommandName="btnCriticas" Text="" CssClass="icon-link-red bi-file-earmark-excel-fill"
+                                         Visible='<%# Eval("Critica") %>'
+                                        CommandArgument='<%# Eval("Id") %>'>
+                                    </asp:LinkButton>
+                                </ItemTemplate>
+                            </asp:TemplateField>
+
                             <asp:TemplateField HeaderText="CPF (.csv)" SortExpression="id" ShowHeader="true" ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnFile" runat="server" CausesValidation="False"

@@ -13,7 +13,6 @@ namespace CompurShop.Domain.Services
         private readonly ICpfsRepository _CpfRepository;
         private readonly IClienteRepository _ClienteRepository;
 
-
         public ListaService(IListaReporsitory listaRepository, ICpfsRepository cpfsRepository, IClienteRepository clienteRepository, IListaArquivoRepository listaArquivoRepository)
         {
             _ListaRepository = listaRepository;
@@ -21,13 +20,13 @@ namespace CompurShop.Domain.Services
             _ClienteRepository = clienteRepository;
             _ListaArquivosRepository = listaArquivoRepository;
         }
+
         public IEnumerable<Lista> BuscarListas(bool carregarCliente, int idcliente)
         {
             var listas = _ListaRepository.GetListasByCliente(idcliente);
             
             foreach (var lista in listas)
-            {
-                //lista.QtdeCpfs = _CpfRepository.GetQtdeCpfLista(lista.Id);
+            {                
                 if (lista.IdCliente > 0 && carregarCliente)
                 {
                     lista.Cliente = _ClienteRepository.GetEntity(lista.IdCliente);
@@ -44,18 +43,18 @@ namespace CompurShop.Domain.Services
             return _ListaRepository.GetEntity(idLista);
         }
 
-        public List<Lista> GetListaByStatus(int status)
-        {
-            var listas = _ListaRepository.GetListas().Where(l => l.Status.Equals(status)).ToList();
-            return listas;
-        }
-
         #endregion
 
         #region Buscas CPF
-        public List<Cpf> CpfPorLista(int idlista)
+        public List<Cpf> CpfPorLista(int idlista, bool criticas)
         {
-            return _CpfRepository.GetCpfLista(idlista);
+            var retorno =  _CpfRepository.GetCpfLista(idlista);
+
+            if (criticas)
+                retorno = retorno.Where(c => c.critica);
+
+            return retorno.ToList();
+
         }
 
         #endregion
@@ -65,8 +64,7 @@ namespace CompurShop.Domain.Services
         public Lista PreparaLista(string nome)
         {
             Lista minhalista = new Lista{ Nome = nome };
-                                    
-           // minhalista.QtdeCpfs = _CpfRepository.GetQtdeCpfInFile(nome);
+           
             minhalista.CpfsLista = nome.Replace("\r\n", ";");
             minhalista.Datahora = DateTime.Now;
             return minhalista;

@@ -65,6 +65,9 @@ namespace CompurShop.Domain.Entities
                 return Status == 2;
             }
         }
+
+        [NotMapped]
+        public Boolean Critica { get; set; }
     }
 
     [Serializable]

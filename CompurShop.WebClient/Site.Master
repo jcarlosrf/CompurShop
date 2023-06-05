@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %> - CompurShop</title>
+    <title><%: Page.Title %>Gestão de Documentos</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
@@ -51,9 +51,9 @@
 
             <div class="d-flex align-items-center justify-content-between">
                 <i class="bi bi-list toggle-sidebar-btn" style="margin-right: 15px"></i>
-                <a href="/" class="logo d-flex align-items-center">
-                    <img src="../../App_Themes/Default/img/logo.png" alt="" style="margin-right: 15px">
-                    <span class="d-none d-lg-block">Compurshop</span>
+                <a href="/Default.aspx" class="logo d-flex align-items-center">
+                    <img src="App_Themes/Default/img/logo.png" alt="" style="margin-right: 15px">
+                    <span class="d-none d-lg-block">Gestão de documentos</span>
                 </a>
 
             </div>
@@ -93,11 +93,8 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a class="dropdown-item d-flex align-items-center" href="#">
-                                        <asp:LinkButton runat="server" ID="btnLogout" CssClass="icon-btn bi-box-arrow-right" Text="Logout">                                            
-                                        </asp:LinkButton>
-
-                                    </a>
+                                    <asp:LinkButton runat="server" ID="btnLogout" OnClick="btnLogout_Click" CssClass="dropdown-item d-flex align-items-center icon-btn bi-box-arrow-right" Text="Logout">                                            
+                                    </asp:LinkButton>                                    
                                 </li>
 
                             </ul>
