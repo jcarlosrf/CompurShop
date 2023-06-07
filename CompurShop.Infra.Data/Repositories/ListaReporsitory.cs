@@ -108,6 +108,6 @@ namespace CompurShop.Infra.Data.Repositories
 
             return listas;
 
-        }
+        }       
     }
 }

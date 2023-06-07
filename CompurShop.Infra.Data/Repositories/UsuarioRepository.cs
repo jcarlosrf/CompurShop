@@ -1,6 +1,7 @@
 ﻿using CompurShop.Domain.Entities;
 using CompurShop.Domain.Interfaces;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -50,14 +51,36 @@ namespace CompurShop.Infra.Data.Repositories
 
         public int Delete(int id)
         {
-            var usuario = _context.Clientes.Find(id);
+            var usuario = _context.Usuarios.Find(id);
             if (usuario != null)
             {
-                _context.Clientes.Remove(usuario);
+                _context.Usuarios.Remove(usuario);
                 return _context.SaveChanges();
             }
 
             return 0;
+        }
+
+
+        public IQueryable<Usuario> GetAll()
+        {
+            var query =  _context.Usuarios.Include("Cliente").Where(u=> u.IdCliente > 0);
+
+            var query2 = _context.Usuarios.Where(u => u.IdCliente == 0);
+            
+            var retorno = query.Concat(query2).OrderBy(u => u.Nome);
+
+            return retorno;
+        }
+
+        public IQueryable<Usuario> GetbyNome(string nome)
+        {
+            var query = GetAll();
+
+            if (!string.IsNullOrEmpty(nome))
+                query = query.Where(u => u.Nome.ToUpper().Contains(nome.ToUpper()) || u.Cliente.Nome.ToUpper().Contains(nome.ToUpper())); 
+
+            return query;
         }
     }
 }

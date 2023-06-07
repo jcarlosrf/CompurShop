@@ -17,10 +17,10 @@
                         <!-- Multi Columns Form -->
                         <div class="col-md-4">
                             <asp:Label ID="labelCpf" runat="server" Text="CPF / CNPJ" AssociatedControlID="textCpf" SkinID="labelItem"></asp:Label>
-                            <asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="textCpf"
+                            <%--<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" ControlToValidate="textCpf"
                                 ValidationGroup="Clientes" ErrorMessage="CPF é obrigatório." CssClass="text-danger" Display="Dynamic">
                                         <i class="bi bi-exclamation-circle"></i>
-                            </asp:RequiredFieldValidator>
+                            </asp:RequiredFieldValidator>--%>
                             <asp:TextBox ID="textCpf" runat="server" SkinID="textInput" ValidateRequestMode="Enabled"></asp:TextBox>
 
                         </div>
@@ -41,6 +41,42 @@
                             <asp:Label ID="labelEmail" runat="server" Text="E-mail" AssociatedControlID="textEmail" SkinID="labelItem"></asp:Label>
                             <asp:TextBox ID="textEmail" runat="server" SkinID="textInput"></asp:TextBox>
                         </div>
+                        <div class="col-md-12">
+                            <hr />
+                        </div>
+
+                         <div class="col-md-4">
+                            <asp:Label ID="label1" runat="server" Text="Login (Usuário)" AssociatedControlID="textLogin" SkinID="labelItem"></asp:Label>
+                            <asp:RequiredFieldValidator ID="RequiredFieldValidator2" runat="server" ControlToValidate="textLogin"
+                                ValidationGroup="Clientes" ErrorMessage="Usuário é obrigatório." CssClass="text-danger" Display="Dynamic">
+                                <i class="bi bi-exclamation-circle"></i>
+                            </asp:RequiredFieldValidator>
+                            <asp:TextBox ID="textLogin" runat="server" SkinID="textInput"></asp:TextBox>
+                        </div>
+
+                        <div class="col-4">
+                            <asp:Label runat="server" AssociatedControlID="txtSenha" class="form-label">Senha</asp:Label>
+                            <asp:RequiredFieldValidator ID="rfvSenha" runat="server" ControlToValidate="txtSenha"
+                                ValidationGroup="Clientes" ErrorMessage="Password é obrigatório."
+                                CssClass="text-danger" Display="Dynamic">
+                                <i class="bi bi-exclamation-circle"></i>
+                            </asp:RequiredFieldValidator>
+                            <asp:TextBox runat="server" type="password" SkinID="textInput" ID="txtSenha"></asp:TextBox>
+
+                        </div>
+                        <div class="col-4">
+                            <asp:Label runat="server" AssociatedControlID="txtSenha2" class="form-label">Confirmar Senha</asp:Label>
+                            <asp:RequiredFieldValidator ID="rfvSenha1" runat="server" ControlToValidate="txtSenha2"
+                                ValidationGroup="Clientes" ErrorMessage="Password é obrigatório."
+                                CssClass="text-danger" Display="Dynamic"><i class="bi bi-exclamation-circle"></i>
+                            </asp:RequiredFieldValidator>
+                            <asp:CompareValidator runat="server" ID="cmpSenha" ControlToCompare="txtSenha" ControlToValidate="txtSenha2"
+                                Operator="Equal" ErrorMessage="As senhas devem ser iguais" Display="Dynamic" ValidationGroup="Clientes"  CssClass="text-danger">
+                                 <i class="bi bi-exclamation-circle"></i>
+                            </asp:CompareValidator>
+                            <asp:TextBox runat="server" type="password" SkinID="textInput" ID="txtSenha2"></asp:TextBox>
+                        </div>
+
                         <div class="col-md-12">
                             <hr />
                         </div>

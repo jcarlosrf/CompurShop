@@ -7,119 +7,128 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CompurShop.WebClient.View.Listas
+namespace CompurShop.WebClient.View.Usuarios
 {
 
 
-    public partial class Listas
+    public partial class UcUsuario
     {
 
         /// <summary>
-        /// labelMessage control.
+        /// labelTitulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelMessage;
+        protected global::System.Web.UI.WebControls.Label labelTitulo;
 
         /// <summary>
-        /// label2 control.
+        /// labelNome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label2;
+        protected global::System.Web.UI.WebControls.Label labelNome;
 
         /// <summary>
-        /// listClientes control.
+        /// rfvNome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox listClientes;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvNome;
 
         /// <summary>
-        /// labelCpf control.
+        /// textNome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelCpf;
+        protected global::System.Web.UI.WebControls.TextBox textNome;
 
         /// <summary>
-        /// textCpf control.
+        /// rfvSenha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textCpf;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSenha;
 
         /// <summary>
-        /// btnSearch control.
+        /// txtSenha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnSearch;
+        protected global::System.Web.UI.WebControls.TextBox txtSenha;
 
         /// <summary>
-        /// btnNew control.
+        /// rfvSenha1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton btnNew;
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvSenha1;
 
         /// <summary>
-        /// UpdListas control.
+        /// cmpSenha control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdListas;
+        protected global::System.Web.UI.WebControls.CompareValidator cmpSenha;
 
         /// <summary>
-        /// Timer1 control.
+        /// txtSenha2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.Timer Timer1;
+        protected global::System.Web.UI.WebControls.TextBox txtSenha2;
 
         /// <summary>
-        /// LoaderListas control.
+        /// labelCliente control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CompurShop.WebClient.Controls.UcLoader LoaderListas;
+        protected global::System.Web.UI.WebControls.Label labelCliente;
 
         /// <summary>
-        /// gridListas control.
+        /// listClientesUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridListas;
+        protected global::System.Web.UI.WebControls.ListBox listClientesUser;
 
         /// <summary>
-        /// UcLista control.
+        /// ValidationSummary1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CompurShop.WebClient.View.Listas.UcLista UcLista;
+        protected global::System.Web.UI.WebControls.ValidationSummary ValidationSummary1;
+
+        /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
     }
 }

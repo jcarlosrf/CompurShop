@@ -4,6 +4,7 @@ using CompurShop.WebClient.App_Start;
 using CompurShop.WebClient.WebProject;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -114,6 +115,33 @@ namespace CompurShop.WebClient.View.Listas
             }
         }
 
+        private async void DownaloadArquivo(Lista lista)
+        {
+            try
+            {              
+                string sourceFilePath = await Task.Run(() => lista.Nome);
+
+                string filename = lista.CpfsLista + ".zip";
+                string destinationFilePath = Server.MapPath("~/download/" + filename);
+
+                if (File.Exists(sourceFilePath))
+                {
+                    File.Copy(sourceFilePath, destinationFilePath, true);
+                    ArquivoCsv.Download(filename);
+                }
+            }
+            catch (System.Threading.ThreadAbortException)
+            {
+                // Ignorar a exceção ThreadAbortException
+            }
+            catch
+            {
+                labelMessage.Text = AlertMessage.GetMessage("Não foi possível gerar arquivo", AlertMessage.TipoMensagem.Erro);
+            }
+            
+        }
+
+
         private async void DownaloadCsv(GridViewCommandEventArgs e, bool criticas)
         {
             try
@@ -184,6 +212,12 @@ namespace CompurShop.WebClient.View.Listas
                 int idLista = Convert.ToInt32(e.CommandArgument);
                 var lista = VS_Listas.FirstOrDefault(l => l.Id == idLista);
 
+                if (lista.Status == 9)
+                {
+                    DownaloadArquivo(lista); 
+                    return;
+                }
+
                 __SessionWEB.PostMessages = "teste";
                 __SessionWEB.PostObject = lista;
 
@@ -193,6 +227,8 @@ namespace CompurShop.WebClient.View.Listas
 
                 script = String.Format(script, "ListaArquivosDownload.aspx", "_blank");
                 ScriptManager.RegisterStartupScript(page, typeof(Page), "Redirect", script, true);
+
+
             }
         }
 
@@ -211,7 +247,7 @@ namespace CompurShop.WebClient.View.Listas
                 if (Vs_Pesquisar)
                 {
                     _ = int.TryParse(listClientes.SelectedValue, out int idcliente);
-                    VS_Listas = _ListaService.BuscarListas(false, idcliente).ToList();
+                    VS_Listas = _ListaService.BuscarListas(false, idcliente, textCpf.Text.Trim(), Properties.Settings.Default.PastaCPF).ToList();
                 }
 
                 Vs_Pesquisar = true;
@@ -235,7 +271,9 @@ namespace CompurShop.WebClient.View.Listas
                 Lista lista = new Lista { Id = 0 };
                 UcLista.CarregarDados(lista, Vs_Clientes);
 
-                ScriptManager.RegisterStartupScript(this, GetType(), "EditLista", "document.getElementById('collapseOne').classList.add('fade'); document.getElementById('collapseOne').classList.add('show');", true);
+                // ScriptManager.RegisterStartupScript(this, GetType(), "EditLista", "document.getElementById('collapseOne').classList.add('fade'); document.getElementById('collapseOne').classList.add('show');", true);
+
+                ScriptManager.RegisterStartupScript(this, GetType(), "EditLista", "$(document).ready(function(){ openModal('#modalDiv'); }); ", true);
             }
             catch
             {

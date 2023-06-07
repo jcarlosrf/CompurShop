@@ -1,4 +1,6 @@
 ﻿using CompurShop.Domain.Entities;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CompurShop.Domain.Interfaces
 {
@@ -9,6 +11,10 @@ namespace CompurShop.Domain.Interfaces
         Usuario GetEntity(int id);
 
         Usuario GetByName(string nome);
+
+        IQueryable<Usuario> GetAll();
+
+        IQueryable<Usuario> GetbyNome(string nome);
 
         int Delete(int id);
     }

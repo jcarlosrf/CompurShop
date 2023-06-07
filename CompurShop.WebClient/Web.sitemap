@@ -11,7 +11,7 @@
       </siteMapNode>
     </siteMapNode>
     <siteMapNode title="Configurações" roles="1" resourceKey="bi bi-grid" description="config-nav" >
-      <siteMapNode url="View/Clientes/Usuario.aspx" title="Usuários"  description="Cadastro de Usuários" roles="1" />
+      <siteMapNode url="View/Usuarios/Usuarios.aspx" title="Usuários"  description="Cadastro de Usuários" roles="1" />
     </siteMapNode>
   </siteMapNode>
 

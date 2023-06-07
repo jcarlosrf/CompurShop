@@ -176,6 +176,7 @@
   <ItemGroup>
     <Content Include="App_Themes\Default\datagrid.css" />
     <Content Include="App_Themes\Default\bootstrap-icons\bootstrap-icons.css" />
+    <Content Include="favicon.ico" />
     <Content Include="App_Themes\Default\img\favicon.png" />
     <Content Include="App_Themes\Default\img\logo.png" />
     <Content Include="App_Themes\Default\img\user.png" />
@@ -212,7 +213,6 @@
     <Content Include="Controls\UcLoader.ascx" />
     <Content Include="Controls\UcMensagem.ascx" />
     <Content Include="Default.aspx" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Login\Login.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -291,6 +291,8 @@
     <Content Include="View\Listas\ListaArquivosDownload.aspx" />
     <Content Include="View\Listas\Listas.aspx" />
     <Content Include="View\Listas\UcLista.ascx" />
+    <Content Include="View\Usuarios\UcUsuario.ascx" />
+    <Content Include="View\Usuarios\Usuarios.aspx" />
     <Content Include="Web.config" />
     <Content Include="Bundle.config" />
     <Content Include="Web.sitemap" />
@@ -390,6 +392,20 @@
     <Compile Include="View\Listas\UcLista.ascx.designer.cs">
       <DependentUpon>UcLista.ascx</DependentUpon>
     </Compile>
+    <Compile Include="View\Usuarios\UcUsuario.ascx.cs">
+      <DependentUpon>UcUsuario.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Usuarios\UcUsuario.ascx.designer.cs">
+      <DependentUpon>UcUsuario.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Usuarios\Usuarios.aspx.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Usuarios\Usuarios.aspx.designer.cs">
+      <DependentUpon>Usuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="WebProject\ArquivoCSV.cs" />
     <Compile Include="WebProject\AlertMessage.cs" />
     <Compile Include="WebProject\Criptografia.cs" />
@@ -398,7 +414,6 @@
   <ItemGroup>
     <Folder Include="Arquivos\" />
     <Folder Include="Download\" />
-    <Folder Include="View\Usuarios\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

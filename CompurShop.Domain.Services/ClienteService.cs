@@ -19,12 +19,12 @@ namespace CompurShop.Domain.Services
             return _clienteRepository.GetClientesByNome(nome, cpf, startRowIndex, registrosPorPagina, out totalRowCount);
         }
 
-        public void GravarCliente(Cliente cliente)
+        public int GravarCliente(Cliente cliente)
         {
             // Implemente a lógica desejada, se necessário
             // Por exemplo, validações ou manipulações dos dados
 
-            _clienteRepository.SaveCliente(cliente);
+            return _clienteRepository.SaveCliente(cliente);
         }
 
         public void Deletar(Cliente cliente)

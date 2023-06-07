@@ -132,10 +132,8 @@ namespace CompurShop.WebClient.View.Listas
         private async void CarregarCombos()
         {
             listClientesNew.DataSource = Vs_Clientes;
-            await Task.Run(()=> listClientesNew.ClearSelection());
             listClientesNew.DataBind();
-            listClientesNew.SelectedValue = "0";
-
+            await Task.Run(() => listClientesNew.ClearSelection());
 
             if (__SessionWEB.IdCliente > 0)
             {

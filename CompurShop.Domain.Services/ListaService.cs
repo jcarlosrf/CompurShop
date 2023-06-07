@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using CompurShop.Domain.Interfaces;
 using CompurShop.Domain.Entities;
 using System.Linq;
+using System.IO;
+using System.IO.Compression;
 
 namespace CompurShop.Domain.Services
 {
@@ -21,8 +23,12 @@ namespace CompurShop.Domain.Services
             _ListaArquivosRepository = listaArquivoRepository;
         }
 
-        public IEnumerable<Lista> BuscarListas(bool carregarCliente, int idcliente)
+        public IEnumerable<Lista> BuscarListas(bool carregarCliente, int idcliente, string cpf, string pasta)
         {
+            if (!string.IsNullOrEmpty(cpf))
+
+                return BuscarListaPorCPF(idcliente, cpf, pasta);
+
             var listas = _ListaRepository.GetListasByCliente(idcliente);
             
             foreach (var lista in listas)
@@ -35,6 +41,61 @@ namespace CompurShop.Domain.Services
 
             return listas;
         }
+
+        public IEnumerable<Lista> BuscarListaPorCPF(int idcliente, string cpf, string pasta)
+        {
+            var listas = new List<Lista>();
+
+            var pastaarquivos = Path.Combine(pasta, cpf);
+            var arquivodestino  = Path.Combine(pasta, "ArquivosGerados", string.Format("{0}.zip", cpf));
+
+            bool exist = Directory.Exists(pastaarquivos);
+            if (!exist)
+            {
+                return listas;
+            }
+
+            bool arquivoExiste = File.Exists(arquivodestino);
+            if (arquivoExiste)
+                File.Delete(arquivodestino);
+
+            using (var zipArchive = ZipFile.Open(arquivodestino, ZipArchiveMode.Create))
+            {
+                AdicionarDiretorioAoZipAsync(zipArchive, pastaarquivos, cpf);
+            }
+
+            Lista list = new Lista
+            {
+                Id = 1,
+                Critica = false,
+                IdCliente = idcliente,
+                Datahora = DateTime.Now,
+                Nome = arquivodestino,
+                Status = 9
+                , CpfsLista = cpf
+            };
+
+            listas.Add(list);
+
+            return listas;
+        }
+
+        private void AdicionarDiretorioAoZipAsync(ZipArchive zipArchive, string diretorioOrigem, string nomeDiretorio)
+        {
+            foreach (string arquivo in Directory.GetFiles(diretorioOrigem))
+            {
+                string nomeArquivo = Path.GetFileName(arquivo);
+                zipArchive.CreateEntryFromFile(arquivo, Path.Combine(nomeDiretorio, nomeArquivo), CompressionLevel.Fastest);
+            }
+
+            foreach (string subdiretorio in Directory.GetDirectories(diretorioOrigem))
+            {
+                string nomeSubdiretorio = Path.GetFileName(subdiretorio);
+                AdicionarDiretorioAoZipAsync(zipArchive, subdiretorio, Path.Combine(nomeDiretorio, nomeSubdiretorio));
+            }
+        }
+
+
 
         #region Buscas de Listas
 

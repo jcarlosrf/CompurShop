@@ -148,4 +148,11 @@
     $("#toggle").on("click", function () {
         $("#listClientesNew").toggle();
     });
+
+    $("#listClientesUser").combobox();
+    $("#toggle").on("click", function () {
+        $("#listClientesUser").toggle();
+    });
+
+    $(".ui-autocomplete").css("z-index", "9999");
 });

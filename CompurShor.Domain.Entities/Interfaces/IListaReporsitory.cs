@@ -12,6 +12,7 @@ namespace CompurShop.Domain.Interfaces
 
         List<Lista> GetListasByCliente(int idcliente);
 
+
         int SaveLista(Lista lista);
     }
 }

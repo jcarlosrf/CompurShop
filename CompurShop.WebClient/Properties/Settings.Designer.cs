@@ -31,5 +31,14 @@ namespace CompurShop.WebClient.Properties {
                 return ((string)(this["PastaArquivos"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("P:\\")]
+        public string PastaCPF {
+            get {
+                return ((string)(this["PastaCPF"]));
+            }
+        }
     }
 }

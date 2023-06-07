@@ -6,14 +6,14 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%: Page.Title %>Gestão de Documentos</title>
+    <title><%: Page.Title %>Dokusbrasil</title>
 
     <asp:PlaceHolder runat="server">
         <%: Scripts.Render("~/bundles/modernizr") %>
     </asp:PlaceHolder>
 
     <webopt:BundleReference runat="server" Path="~/App_Themes/Default/css" />
-    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <asp:ContentPlaceHolder ID="HeadContent" runat="server">
         
     </asp:ContentPlaceHolder>
@@ -53,7 +53,7 @@
                 <i class="bi bi-list toggle-sidebar-btn" style="margin-right: 15px"></i>
                 <a href="/Default.aspx" class="logo d-flex align-items-center">
                     <img src="App_Themes/Default/img/logo.png" alt="" style="margin-right: 15px">
-                    <span class="d-none d-lg-block">Gestão de documentos</span>
+                    <span class="d-none d-lg-block">DokusBrasil</span>
                 </a>
 
             </div>
@@ -179,7 +179,7 @@
     <div id="footer" class="footer fixed-bottom">
         <div class="container-fluid panel-footer">
             <footer>
-                <p style="font-weight: bold; color: #242745">&copy; <%: DateTime.Now.Year %> - Scire tecnologia</p>
+                <%--<p style="font-weight: bold; color: #242745">&copy; <%: DateTime.Now.Year %> </p>--%>
             </footer>
         </div>
 

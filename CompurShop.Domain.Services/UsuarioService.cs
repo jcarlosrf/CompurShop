@@ -1,5 +1,7 @@
 ﻿using CompurShop.Domain.Entities;
 using CompurShop.Domain.Interfaces;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CompurShop.Domain.Services
@@ -38,6 +40,12 @@ namespace CompurShop.Domain.Services
                 return null;            
 
             return user.Senha.Equals(senha) ? user : null;            
+        }
+
+        public IEnumerable<Usuario> GetbyNome(string nome)
+        {
+            var users = _usuarioRepository.GetbyNome(nome).ToList();
+            return users;
         }
     }
 }

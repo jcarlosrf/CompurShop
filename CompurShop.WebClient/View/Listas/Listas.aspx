@@ -19,6 +19,11 @@
                         DataTextField="nome" AppendDataBoundItems="true" DataValueField="id" ItemType="CompurShop.Domain.Entities.Cliente"></asp:ListBox>
                 </div>
 
+                <div class="col-sm-12 col-md-4 ui-widget">
+                    <asp:Label ID="labelCpf" runat="server" Text="CPF / CNPJ" AssociatedControlID="textCpf" SkinID="labelItem"></asp:Label>
+                    <asp:TextBox ID="textCpf" runat="server" SkinID="textInput" Style="font-size:14px;" ValidateRequestMode="Enabled"></asp:TextBox>                    
+                </div>
+
                 <div class="col-sm-12 col-md-4 d-flex align-items-end">
                     <asp:LinkButton runat="server" ID="btnSearch" Text="Pesquisar" OnClick="btnSearch_Click" SkinID="btPesquisar" Style="margin-left: auto;"></asp:LinkButton>
                     <asp:LinkButton runat="server" ID="btnNew" Text="Novo" OnClick="btnNew_Click"
@@ -31,21 +36,13 @@
         </div>
 
         <div class="card-body">
-            <div id="cadastroDiv">
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <uc2:UcLista runat="server" ID="UcLista" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
+
+
             <asp:UpdatePanel runat="server" ID="UpdListas" UpdateMode="Always">
                 <ContentTemplate>
                     <asp:Timer ID="Timer1" runat="server" Interval="30000" Enabled="false" OnTick="Timer1_Tick"></asp:Timer>
-                    
-                    <uc1:UcLoader runat="server" id="LoaderListas" AssociatedUpdatePanelID = "UpdListas" />
+
+                    <uc1:UcLoader runat="server" ID="LoaderListas" AssociatedUpdatePanelID="UpdListas" />
                     <asp:GridView ID="gridListas" runat="server" AutoGenerateColumns="False"
                         AllowPaging="false"
                         ShowHeaderWhenEmpty="True" ShowHeader="true"
@@ -81,11 +78,11 @@
                                 </ItemTemplate>
                             </asp:TemplateField>
 
-                             <asp:TemplateField HeaderText="Críticas (.csv)" SortExpression="id" ShowHeader="true" ItemStyle-HorizontalAlign="Center">
+                            <asp:TemplateField HeaderText="Críticas (.csv)" SortExpression="id" ShowHeader="true" ItemStyle-HorizontalAlign="Center">
                                 <ItemTemplate>
                                     <asp:LinkButton ID="btnFileCriticas" runat="server" CausesValidation="False"
                                         CommandName="btnCriticas" Text="" CssClass="icon-link-red bi-file-earmark-excel-fill"
-                                         Visible='<%# Eval("Critica") %>'
+                                        Visible='<%# Eval("Critica") %>'
                                         CommandArgument='<%# Eval("Id") %>'>
                                     </asp:LinkButton>
                                 </ItemTemplate>
@@ -102,11 +99,16 @@
                         </Columns>
                     </asp:GridView>
                 </ContentTemplate>
-                <Triggers>                    
+                <Triggers>
                     <asp:PostBackTrigger ControlID="gridListas" />
                 </Triggers>
             </asp:UpdatePanel>
         </div>
+    </div>
+
+
+    <div id="modalDiv" class="modal fade">
+        <uc2:UcLista runat="server" ID="UcLista" />
     </div>
 
 </asp:Content>

@@ -7,12 +7,30 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CompurShop.WebClient.View.Listas
+namespace CompurShop.WebClient.View.Usuarios
 {
 
 
-    public partial class Listas
+    public partial class Usuarios
     {
+
+        /// <summary>
+        /// updUsuarios control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updUsuarios;
+
+        /// <summary>
+        /// UcLoader control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CompurShop.WebClient.Controls.UcLoader UcLoader;
 
         /// <summary>
         /// labelMessage control.
@@ -24,40 +42,22 @@ namespace CompurShop.WebClient.View.Listas
         protected global::System.Web.UI.WebControls.Label labelMessage;
 
         /// <summary>
-        /// label2 control.
+        /// labelNome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label label2;
+        protected global::System.Web.UI.WebControls.Label labelNome;
 
         /// <summary>
-        /// listClientes control.
+        /// txtNome control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListBox listClientes;
-
-        /// <summary>
-        /// labelCpf control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label labelCpf;
-
-        /// <summary>
-        /// textCpf control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox textCpf;
+        protected global::System.Web.UI.WebControls.TextBox txtNome;
 
         /// <summary>
         /// btnSearch control.
@@ -78,48 +78,30 @@ namespace CompurShop.WebClient.View.Listas
         protected global::System.Web.UI.WebControls.LinkButton btnNew;
 
         /// <summary>
-        /// UpdListas control.
+        /// gridUsuarios control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdListas;
+        protected global::System.Web.UI.WebControls.GridView gridUsuarios;
 
         /// <summary>
-        /// Timer1 control.
+        /// UcUsuario control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.Timer Timer1;
+        protected global::CompurShop.WebClient.View.Usuarios.UcUsuario UcUsuario;
 
         /// <summary>
-        /// LoaderListas control.
+        /// UcMensagem1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::CompurShop.WebClient.Controls.UcLoader LoaderListas;
-
-        /// <summary>
-        /// gridListas control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridListas;
-
-        /// <summary>
-        /// UcLista control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::CompurShop.WebClient.View.Listas.UcLista UcLista;
+        protected global::CompurShop.WebClient.Controls.UcMensagem UcMensagem1;
     }
 }

@@ -14,6 +14,7 @@ namespace CompurShop.WebClient.View.Clientes
     public partial class UcClienteView : System.Web.UI.UserControl
     {
         private readonly ClienteService _clienteService;
+        private readonly UsuarioService _userService;
 
         // Delegate
         public delegate void GravouClienteEventHandler(object sender, string nome);
@@ -34,9 +35,24 @@ namespace CompurShop.WebClient.View.Clientes
             }
         }
 
+        protected Usuario Vs_User
+        {
+            get
+            {
+                if (ViewState["Vs_User"] == null)
+                    ViewState["Vs_User"] = new Usuario();
+                return (Usuario)ViewState["Vs_User"];
+            }
+            set
+            {
+                ViewState["Vs_User"] = value;
+            }
+        }
+
         public UcClienteView()
         {
             _clienteService = DependencyConfig.Resolve<ClienteService>();
+            _userService = DependencyConfig.Resolve<UsuarioService>();
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -68,6 +84,10 @@ namespace CompurShop.WebClient.View.Clientes
             textBairro.Text = cliente.Bairro;
             textCep.Text = cliente.CEP;
 
+            textLogin.Text = string.Empty;
+            txtSenha.Text = string.Empty;
+            txtSenha2.Text = string.Empty;
+
             // Carregar o valor no dropdown de estados
             if (VsCliente.UF != null)
                 dropUF.SelectedValue = VsCliente.UF;
@@ -97,7 +117,18 @@ namespace CompurShop.WebClient.View.Clientes
                 cliente.UF = dropUF.SelectedValue;
 
                 _clienteService.GravarCliente(cliente);
-                
+
+                int codcliente = cliente.Id;
+
+                Usuario usuario = Vs_User;
+                usuario.Nome = textLogin.Text;
+
+                usuario.IdCliente = codcliente;
+                usuario.IdNivel = codcliente > 0 ? 1 : 2;
+                usuario.Senha = txtSenha.Text;
+
+                _userService.Gravar(usuario);
+
                 GravouCliente(sender, cliente.Nome);
             }
         }
