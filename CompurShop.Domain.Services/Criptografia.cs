@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Security;
 
-namespace CompurShop.WebClient.WebProject
+namespace CompurShop.Domain.Services
 {
     public static class Criptografia
     {

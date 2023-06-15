@@ -18,6 +18,7 @@ namespace CompurShop.Domain.Services
         public int Gravar(Usuario usuario)
         {
             usuario.IdNivel = usuario.IdCliente == 0 ? 1 : 2;
+            usuario.Senha = Criptografia.CriptografiaSenha(usuario.Senha.Trim());
 
             return _usuarioRepository.Save(usuario);
         }
@@ -34,6 +35,8 @@ namespace CompurShop.Domain.Services
 
         public Usuario GetPermissao(string nome, string senha)
         {
+            senha = Criptografia.CriptografiaSenha(senha.Trim());
+
             Usuario user = _usuarioRepository.GetByName(nome);
 
             if (user == null)

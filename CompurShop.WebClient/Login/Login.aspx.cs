@@ -39,10 +39,10 @@ namespace CompurShop.WebClient.Login
         {
             try
             {
-                string senhax = Criptografia.CriptografiaSenha(yourPassword.Text.Trim());
-                string userx = yourUsername.Text.Trim();
+                string senha = yourPassword.Text.Trim();
+                string user = yourUsername.Text.Trim();
 
-                var usuario = _usuarioService.GetPermissao(userx, senhax);
+                var usuario = _usuarioService.GetPermissao(user, senha);
 
                 if (usuario == null)
                     throw new Exception("Usuário ou Password incorretos!");
